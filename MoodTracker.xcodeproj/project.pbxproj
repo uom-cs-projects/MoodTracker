@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA1DB00C21A3630B008676C0 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1DB00B21A3630B008676C0 /* ThirdViewController.swift */; };
+		BA1DB00E21A4161C008676C0 /* FourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1DB00D21A4161C008676C0 /* FourthViewController.swift */; };
+		BA1DB01021A4162A008676C0 /* FifthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1DB00F21A4162A008676C0 /* FifthViewController.swift */; };
 		BAA1A3A321691FB000BBAE22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA1A3A021691FB000BBAE22 /* AppDelegate.swift */; };
 		BAA1A3A421691FB000BBAE22 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA1A3A121691FB000BBAE22 /* FirstViewController.swift */; };
 		BAA1A3A521691FB000BBAE22 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA1A3A221691FB000BBAE22 /* SecondViewController.swift */; };
@@ -35,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BA1DB00B21A3630B008676C0 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		BA1DB00D21A4161C008676C0 /* FourthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthViewController.swift; sourceTree = "<group>"; };
+		BA1DB00F21A4162A008676C0 /* FifthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifthViewController.swift; sourceTree = "<group>"; };
 		BAA1A3A021691FB000BBAE22 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BAA1A3A121691FB000BBAE22 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		BAA1A3A221691FB000BBAE22 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +109,9 @@
 				BAA1A3A121691FB000BBAE22 /* FirstViewController.swift */,
 				BAA1A3A221691FB000BBAE22 /* SecondViewController.swift */,
 				BABBC84121690D1300CC886B /* Main.storyboard */,
+				BA1DB00D21A4161C008676C0 /* FourthViewController.swift */,
+				BA1DB00F21A4162A008676C0 /* FifthViewController.swift */,
+				BA1DB00B21A3630B008676C0 /* ThirdViewController.swift */,
 				BABBC84421690D1300CC886B /* Assets.xcassets */,
 				BABBC84621690D1300CC886B /* LaunchScreen.storyboard */,
 				BABBC84921690D1300CC886B /* Info.plist */,
@@ -263,9 +272,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA1DB01021A4162A008676C0 /* FifthViewController.swift in Sources */,
 				BAA1A3A521691FB000BBAE22 /* SecondViewController.swift in Sources */,
 				BAA1A3A321691FB000BBAE22 /* AppDelegate.swift in Sources */,
+				BA1DB00C21A3630B008676C0 /* ThirdViewController.swift in Sources */,
 				BAA1A3A421691FB000BBAE22 /* FirstViewController.swift in Sources */,
+				BA1DB00E21A4161C008676C0 /* FourthViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
