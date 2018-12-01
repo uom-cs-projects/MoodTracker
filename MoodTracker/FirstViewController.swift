@@ -10,9 +10,33 @@ import UIKit
 
 class FirstViewController: UIViewController {
 
+    
+    @IBOutlet var circleimage: UIImageView!
+    var isready = false
+    
+    @IBAction func gotoinputpage(_ sender: UIButton) {
+        tabBarController?.selectedIndex = 1
+    }
+    
+    @IBOutlet var inputnow: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        
+        if isready {
+            circleimage.image = #imageLiteral(resourceName: "green")
+            inputnow.setTitle("Input data now!", for: .normal)
+            inputnow.isEnabled = true
+            
+        }else{
+            circleimage.image = #imageLiteral(resourceName: "orange")
+            inputnow.setTitle("Please wait until input time", for: .normal)
+            inputnow.isEnabled = false
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -10,11 +10,14 @@ import UIKit
 
 class FourthViewController: UIViewController {
 
+    @IBOutlet var Infobox: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        Infobox.text = "This app is a third year project research application with the University of Manchester. \nYou will spend a week inputting your mood throughout the day. \nThen you will spend a week inputting your mood throughout the day and at the end of the day.\nWe will use this data to figure out which is a better way of collecting your mood."
     }
+    
     
 
     /*
