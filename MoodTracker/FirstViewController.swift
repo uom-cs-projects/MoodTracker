@@ -12,7 +12,7 @@ class FirstViewController: UIViewController {
 
     
     @IBOutlet var circleimage: UIImageView!
-    var isready = false
+    var isready = true
     
     @IBAction func gotoinputpage(_ sender: UIButton) {
         tabBarController?.selectedIndex = 1

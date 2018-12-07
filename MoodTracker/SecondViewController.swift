@@ -13,10 +13,42 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
         textbox.delegate = self
+        currentbutton = alertbutton
+        let date = Date()
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        switch hour {
+        case 6..<11:
+            timestring = "Morning"
+        case 11..<15:
+            timestring = "Lunch"
+        case 15..<18:
+            timestring = "Afternoon"
+        case 18..<22:
+            timestring = "Evening"
+        default:
+            timestring = "Bed Time"
+        }
+        
+        
     }
 
+    var currentbutton : UIButton?
+    var currentemotion = ""
+    @IBOutlet var alertbutton: UIButton!
+    var confirmemotion = UIAlertController()
+    var timestring : String?
+    
+
+    
+    
+    @IBAction func emotionclick(_ sender: Any) {
+        currentbutton?.setTitleColor(self.view.tintColor, for: .normal)
+        currentbutton = (sender as! UIButton)
+        currentemotion = (sender as AnyObject).currentTitle!
+        (sender as AnyObject).setTitleColor(.red, for: .normal)
+    }
     @IBOutlet weak var submit: UIButton!
     @IBOutlet weak var textbox: UITextField!
     @IBOutlet weak var picview: UIImageView!
@@ -52,8 +84,23 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         dismiss(animated: true, completion: nil)
     }
     @IBAction func clicksubmit(_ sender: Any) {
-        textbox.text = "test";
         
+        let alertmessage = "Submitting \"" + currentemotion.lowercased() + "\" as your emotion at " + (timestring?.lowercased())!
+        let alert = UIAlertController(title: "Please Confirm your Data", message: alertmessage, preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Default action"), style: .cancel, handler: { _ in
+            NSLog("The \"Cancel\" alert occured.")
+        })
+        
+        let OKAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in
+            NSLog("The \"OK\" alert occured.")
+            self.textbox.text = self.currentemotion;
+        })
+        
+        alert.addAction(cancelAction)
+        alert.addAction(OKAction)
+        alert.preferredAction = OKAction
+        self.present(alert, animated: true, completion: nil)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
