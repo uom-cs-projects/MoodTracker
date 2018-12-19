@@ -98,11 +98,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eqa-LI-bmw">
-                                <rect key="frame" x="68" y="389" width="119" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Go to first screen"/>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter something here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wUr-QO-jEa">
                                 <rect key="frame" x="111" y="510" width="168" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -110,15 +105,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="firstpic" translatesAutoresizingMaskIntoConstraints="NO" id="B7o-jK-i6D">
-                                <rect key="frame" x="67" y="638" width="240" height="128"/>
+                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="green" translatesAutoresizingMaskIntoConstraints="NO" id="B7o-jK-i6D">
+                                <rect key="frame" x="83" y="119" width="226" height="211"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="s94-ue-blZ" appends="YES" id="flD-og-3Pm"/>
                                 </connections>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pa2-q5-GaG">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pa2-q5-GaG">
                                 <rect key="frame" x="191" y="44" width="33" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Alert"/>
@@ -126,7 +121,7 @@
                                     <action selector="emotionclick:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="3bX-sU-2ai"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ovi-qQ-KH0">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ovi-qQ-KH0">
                                 <rect key="frame" x="249" y="75" width="60" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Cheerful"/>
@@ -134,7 +129,7 @@
                                     <action selector="emotionclick:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="6Wc-4o-3ig"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J63-I7-SG6">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J63-I7-SG6">
                                 <rect key="frame" x="296" y="109" width="52" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Suprise"/>
@@ -142,7 +137,7 @@
                                     <action selector="emotionclick:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="2o4-KF-pal"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIh-FC-gcp">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIh-FC-gcp">
                                 <rect key="frame" x="319" y="143" width="51" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Excited"/>
@@ -150,7 +145,7 @@
                                     <action selector="emotionclick:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="gBJ-OS-1e5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aug-UC-uir">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aug-UC-uir">
                                 <rect key="frame" x="327" y="181" width="66" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Delighted"/>
@@ -158,7 +153,7 @@
                                     <action selector="emotionclick:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="csh-QZ-wQU"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BD0-dv-euL">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BD0-dv-euL">
                                 <rect key="frame" x="369" y="219" width="45" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Happy"/>
@@ -166,7 +161,7 @@
                                     <action selector="emotionclick:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="V5b-XE-1cQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJC-98-GZ3">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJC-98-GZ3">
                                 <rect key="frame" x="349" y="252" width="59" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Pleasure"/>
@@ -174,7 +169,7 @@
                                     <action selector="emotionclick:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="QLg-Yb-syW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uXe-v3-sCj">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uXe-v3-sCj">
                                 <rect key="frame" x="319" y="290" width="55" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Hopeful"/>
@@ -182,7 +177,7 @@
                                     <action selector="emotionclick:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="sd0-xy-Btl"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Do1-Od-aym">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Do1-Od-aym">
                                 <rect key="frame" x="295" y="328" width="55" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Content"/>
@@ -190,7 +185,7 @@
                                     <action selector="emotionclick:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Voh-kY-vyM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxn-D3-abJ">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxn-D3-abJ">
                                 <rect key="frame" x="243" y="351" width="54" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Relaxed"/>
@@ -198,7 +193,7 @@
                                     <action selector="emotionclick:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="tSs-Fb-zWF"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QuD-pb-wDg">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QuD-pb-wDg">
                                 <rect key="frame" x="182" y="379" width="42" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Numb"/>
@@ -206,7 +201,7 @@
                                     <action selector="emotionclick:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="uLt-br-Sf6"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FCa-pk-LfP">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FCa-pk-LfP">
                                 <rect key="frame" x="126" y="351" width="36" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Tired"/>
@@ -214,7 +209,7 @@
                                     <action selector="emotionclick:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="exR-f3-WMd"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KeF-HN-qQL">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KeF-HN-qQL">
                                 <rect key="frame" x="74" y="320" width="60" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Fatigued"/>
@@ -222,7 +217,7 @@
                                     <action selector="emotionclick:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="CvF-S5-38u"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Csb-nw-Urt">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Csb-nw-Urt">
                                 <rect key="frame" x="23" y="252" width="74" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Depressed"/>
@@ -230,7 +225,7 @@
                                     <action selector="emotionclick:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="12E-9Y-BoC"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9y-KB-WlJ">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9y-KB-WlJ">
                                 <rect key="frame" x="56" y="282" width="41" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Bored"/>
@@ -238,7 +233,7 @@
                                     <action selector="emotionclick:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="EGY-p8-68D"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nd2-Wg-Mdc">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nd2-Wg-Mdc">
                                 <rect key="frame" x="8" y="172" width="55" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Irritated"/>
@@ -246,7 +241,7 @@
                                     <action selector="emotionclick:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="ns7-HB-5qv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oOd-ui-Yho">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oOd-ui-Yho">
                                 <rect key="frame" x="20" y="134" width="61" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Stressed"/>
@@ -254,7 +249,7 @@
                                     <action selector="emotionclick:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="OWr-ha-7gq"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fPo-gb-vGF">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fPo-gb-vGF">
                                 <rect key="frame" x="53" y="96" width="41" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Angry"/>
@@ -262,7 +257,7 @@
                                     <action selector="emotionclick:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="NuW-8g-teF"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZv-aH-7Yr">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZv-aH-7Yr">
                                 <rect key="frame" x="86" y="71" width="58" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Nervous"/>
@@ -270,7 +265,7 @@
                                     <action selector="emotionclick:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="qm3-SH-cyK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K0t-gv-nLV">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K0t-gv-nLV">
                                 <rect key="frame" x="8" y="219" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Sad"/>
@@ -286,6 +281,14 @@
                                     <action selector="clicksubmit:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="c6O-aU-ZBN"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eqa-LI-bmw">
+                                <rect key="frame" x="38" y="388" width="106" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Input Data Now"/>
+                                <connections>
+                                    <action selector="inputnow:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="7G3-Xi-eO2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -299,9 +302,30 @@
                     <tabBarItem key="tabBarItem" title="Input" image="second" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="alertbutton" destination="Pa2-q5-GaG" id="kks-ph-hYe"/>
-                        <outlet property="picview" destination="B7o-jK-i6D" id="Wbe-gl-2UK"/>
+                        <outlet property="circle" destination="B7o-jK-i6D" id="7Th-2z-KlS"/>
+                        <outlet property="inputnow" destination="Eqa-LI-bmw" id="oiq-pc-E44"/>
                         <outlet property="submit" destination="jht-Zi-bYV" id="hKy-2M-aTR"/>
                         <outlet property="textbox" destination="wUr-QO-jEa" id="OXJ-bG-SGM"/>
+                        <outletCollection property="emotionbuttons" destination="Aug-UC-uir" collectionClass="NSMutableArray" id="449-BY-TCz"/>
+                        <outletCollection property="emotionbuttons" destination="VIh-FC-gcp" collectionClass="NSMutableArray" id="KzO-wk-To5"/>
+                        <outletCollection property="emotionbuttons" destination="BD0-dv-euL" collectionClass="NSMutableArray" id="IvH-W5-GRi"/>
+                        <outletCollection property="emotionbuttons" destination="fJC-98-GZ3" collectionClass="NSMutableArray" id="iOa-yC-bMQ"/>
+                        <outletCollection property="emotionbuttons" destination="uXe-v3-sCj" collectionClass="NSMutableArray" id="K2F-Mc-qoI"/>
+                        <outletCollection property="emotionbuttons" destination="Do1-Od-aym" collectionClass="NSMutableArray" id="4Lw-QE-uqh"/>
+                        <outletCollection property="emotionbuttons" destination="bxn-D3-abJ" collectionClass="NSMutableArray" id="FaS-aT-FlI"/>
+                        <outletCollection property="emotionbuttons" destination="QuD-pb-wDg" collectionClass="NSMutableArray" id="Yif-3u-nSV"/>
+                        <outletCollection property="emotionbuttons" destination="FCa-pk-LfP" collectionClass="NSMutableArray" id="YNN-wZ-KHu"/>
+                        <outletCollection property="emotionbuttons" destination="KeF-HN-qQL" collectionClass="NSMutableArray" id="75g-xd-uZm"/>
+                        <outletCollection property="emotionbuttons" destination="s9y-KB-WlJ" collectionClass="NSMutableArray" id="zVn-nv-G8t"/>
+                        <outletCollection property="emotionbuttons" destination="Csb-nw-Urt" collectionClass="NSMutableArray" id="45R-mD-eTV"/>
+                        <outletCollection property="emotionbuttons" destination="K0t-gv-nLV" collectionClass="NSMutableArray" id="F1d-Sy-Vc0"/>
+                        <outletCollection property="emotionbuttons" destination="nd2-Wg-Mdc" collectionClass="NSMutableArray" id="cdp-Vu-0s1"/>
+                        <outletCollection property="emotionbuttons" destination="oOd-ui-Yho" collectionClass="NSMutableArray" id="ji2-r7-1RN"/>
+                        <outletCollection property="emotionbuttons" destination="fPo-gb-vGF" collectionClass="NSMutableArray" id="u6e-HW-9vI"/>
+                        <outletCollection property="emotionbuttons" destination="iZv-aH-7Yr" collectionClass="NSMutableArray" id="ITU-6z-3nJ"/>
+                        <outletCollection property="emotionbuttons" destination="Pa2-q5-GaG" collectionClass="NSMutableArray" id="XlO-9D-PrN"/>
+                        <outletCollection property="emotionbuttons" destination="ovi-qQ-KH0" collectionClass="NSMutableArray" id="Ftv-do-tPG"/>
+                        <outletCollection property="emotionbuttons" destination="J63-I7-SG6" collectionClass="NSMutableArray" id="ilE-qS-ddM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -311,12 +335,12 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="750" y="360"/>
+            <point key="canvasLocation" x="749.27536231884062" y="359.59821428571428"/>
         </scene>
         <!--Table-->
         <scene sceneID="V2P-iP-exa">
             <objects>
-                <tableViewController title="Table" id="Tsm-Mq-iJk" sceneMemberID="viewController">
+                <tableViewController title="Table" id="Tsm-Mq-iJk" customClass="TableViewController" customModule="MoodTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ShZ-AN-zod">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -387,11 +411,10 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
-                        <segue destination="Rz9-Yg-AjD" kind="relationship" relationship="viewControllers" id="efV-lN-eYq"/>
                         <segue destination="0Em-i4-UWG" kind="relationship" relationship="viewControllers" id="KfB-bw-BMG"/>
                         <segue destination="Tsm-Mq-iJk" kind="relationship" relationship="viewControllers" id="dMg-TC-zi5"/>
+                        <segue destination="Rz9-Yg-AjD" kind="relationship" relationship="viewControllers" id="efV-lN-eYq"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -401,7 +424,7 @@
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
-        <image name="firstpic" width="637" height="476"/>
+        <image name="green" width="1000" height="1000"/>
         <image name="second" width="30" height="30"/>
     </resources>
 </document>

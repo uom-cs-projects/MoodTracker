@@ -11,7 +11,9 @@ import SQLite3
 
 class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
 
-   
+   var isready = true
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -33,7 +35,6 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             timestring = "Bed Time"
         }
         
-        
         //db file
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) .appendingPathComponent("MoodDatabase.sqlite")
 
@@ -43,7 +44,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         }
         
         //create table
-        /*
+       /*
         if sqlite3_exec(db, "DROP TABLE Mood", nil, nil, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error removing table: \(errmsg)")
@@ -54,6 +55,24 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             print("error creating table: \(errmsg)")
         }
         
+        readValues()
+        
+        if moodList.count>0{
+            isready = false
+        }else{
+            isready = true
+        }
+        
+        
+        if isready {
+            circle.image = #imageLiteral(resourceName: "green")
+            inputnow.setTitle("Input data now!", for: .normal)
+            inputnow.isEnabled = true
+        }else{
+            circle.image = #imageLiteral(resourceName: "orange")
+            inputnow.setTitle("Please wait until input time", for: .normal)
+            inputnow.isEnabled = false
+        }
         
     }
 
@@ -66,7 +85,19 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     var confirmemotion = UIAlertController()
     var timestring = ""
     var moodList = [Moods]()
-
+    @IBOutlet var inputnow: UIButton!
+    
+    @IBOutlet var emotionbuttons: [UIButton]!
+    
+    @IBAction func inputnow(_ sender: Any) {
+        for curbutton in emotionbuttons {
+            curbutton.isHidden = false
+            curbutton.setTitleColor(self.view.tintColor, for: .normal)
+        }
+        circle.isHidden = true
+        inputnow.isHidden = true
+    }
+    @IBOutlet var circle: UIImageView!
     
     
     @IBAction func emotionclick(_ sender: Any) {
