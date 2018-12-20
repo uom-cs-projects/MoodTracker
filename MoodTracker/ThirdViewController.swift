@@ -10,13 +10,25 @@ import UIKit
 
 class ThirdViewController: UIViewController {
 
+    
+    
+    struct numberss {
+        var numbers = [1,2,3,4,5,6,7]
+    }
+    @IBOutlet weak var GraphView: GraphView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
 
+        setupGraphDisplay()
+    }
+    
+    func setupGraphDisplay() {
+    
+    }
     /*
     // MARK: - Navigation
 

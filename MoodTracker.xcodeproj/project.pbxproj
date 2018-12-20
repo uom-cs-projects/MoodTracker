@@ -23,6 +23,7 @@
 		BABBC84821690D1300CC886B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BABBC84621690D1300CC886B /* LaunchScreen.storyboard */; };
 		BABBC85321690D1400CC886B /* MoodTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABBC85221690D1400CC886B /* MoodTrackerTests.swift */; };
 		BABBC85E21690D1400CC886B /* MoodTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABBC85D21690D1400CC886B /* MoodTrackerUITests.swift */; };
+		BACF50E821CBCB150041937A /* graphview.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACF50E721CBCB150041937A /* graphview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		BABBC85921690D1400CC886B /* MoodTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoodTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BABBC85D21690D1400CC886B /* MoodTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodTrackerUITests.swift; sourceTree = "<group>"; };
 		BABBC85F21690D1400CC886B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BACF50E721CBCB150041937A /* graphview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = graphview.swift; sourceTree = "<group>"; };
 		CF9CE4D8A30B2551F4AD83E0 /* Pods-MoodTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoodTrackerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoodTrackerTests/Pods-MoodTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F2C23122E807974ACCDEA85F /* Pods_MoodTrackerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoodTrackerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7DAC359DD54FB94B96990F0 /* Pods-MoodTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoodTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-MoodTracker/Pods-MoodTracker.release.xcconfig"; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				BABBC84421690D1300CC886B /* Assets.xcassets */,
 				BABBC84621690D1300CC886B /* LaunchScreen.storyboard */,
 				BABBC84921690D1300CC886B /* Info.plist */,
+				BACF50E721CBCB150041937A /* graphview.swift */,
 			);
 			path = MoodTracker;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				BA3E38A521C7FC5100A9E2D4 /* TableViewController.swift in Sources */,
 				BAA1A3A321691FB000BBAE22 /* AppDelegate.swift in Sources */,
 				BA1DB00C21A3630B008676C0 /* ThirdViewController.swift in Sources */,
+				BACF50E821CBCB150041937A /* graphview.swift in Sources */,
 				BAA1A3A421691FB000BBAE22 /* FirstViewController.swift in Sources */,
 				BA1DB00E21A4161C008676C0 /* FourthViewController.swift in Sources */,
 			);

@@ -67,15 +67,38 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VQX-XH-mVY" userLabel="Graphview" customClass="GraphView" customModule="MoodTracker" customModuleProvider="target">
+                                <rect key="frame" x="55" y="303.5" width="304" height="250"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="V2P-35-RzV"/>
+                                    <constraint firstAttribute="width" constant="304" id="kYE-gX-dwD"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                        <color key="value" red="0.84667651788727094" green="0.94661831364803695" blue="0.97634202241897583" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                        <color key="value" red="0.31395246100257479" green="0.63308874473551846" blue="0.92932146787643433" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="VQX-XH-mVY" firstAttribute="centerY" secondItem="DmK-uV-hde" secondAttribute="centerY" id="P33-Z2-nbC"/>
+                            <constraint firstItem="VQX-XH-mVY" firstAttribute="centerX" secondItem="DmK-uV-hde" secondAttribute="centerX" id="gZK-oj-4zl"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="DmK-uV-hde"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Graph" id="apn-xx-ioh"/>
+                    <connections>
+                        <outlet property="GraphView" destination="VQX-XH-mVY" id="aaC-Z8-vCs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sEG-Py-V1a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1494" y="-318"/>
+            <point key="canvasLocation" x="1492.753623188406" y="-318.08035714285711"/>
         </scene>
         <!--Input-->
         <scene sceneID="wg7-f3-ORb">

@@ -41,42 +41,18 @@ class TableViewController: UITableViewController {
     
     func readValues(){
         
-        //first empty the list of mood
         moodList.removeAll()
         
-        //this is our select query
-        //let theFormatter = DateFormatter()
-        //theFormatter.dateFormat = "yyyy-MM-dd";
-        //let datestring = theFormatter.string(from: Date()) as NSString
-        
         let queryString = "SELECT * FROM Mood"
-        //let mytime = timestring.lowercased() as NSString
-        //statement pointer
         var stmt:OpaquePointer?
-        //let mytime = "Mood" as NSString
         
-        //print(mytime)
-        //preparing the query
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error preparing insert: \(errmsg)")
             return
-        }/*
-        if sqlite3_bind_text(stmt, 1, mytime.utf8String, -1, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("failure binding name: \(errmsg)")
-            return
         }
         
-        
-        if sqlite3_bind_text(stmt, 2, datestring.utf8String, -1, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("failure binding name: \(errmsg)")
-            return
-        }
-        */
-        
-        //traversing through all the records
+        //traverse through all the moods
         while(sqlite3_step(stmt) == SQLITE_ROW){
             let id = sqlite3_column_int(stmt, 0)
             let date = String(cString: sqlite3_column_text(stmt, 1))
@@ -84,7 +60,7 @@ class TableViewController: UITableViewController {
             let emotion = String(cString: sqlite3_column_text(stmt, 3))
             
             
-            //adding values to list
+            //add values to list
             moodList.append(Moods(id: Int(id), date: String(describing: date), time: String(describing: time), emotion: String(describing: emotion)))
         }
         tableView.dataSource = self

@@ -257,22 +257,19 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     }
     
     func readValues(){
-        
-        //first empty the list of mood
+
         moodList.removeAll()
         
-        //this is our select query
         let theFormatter = DateFormatter()
         theFormatter.dateFormat = "yyyy-MM-dd";
         let datestring = theFormatter.string(from: Date()) as NSString
         
         let queryString = "SELECT * FROM Mood WHERE thetime IS ? AND thedate IS ?"
         let mytime = timestring.lowercased() as NSString
-        //statement pointer
         var stmt:OpaquePointer?
         
         print(mytime)
-        //preparing the query
+        //prepare query
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error preparing insert: \(errmsg)")
@@ -291,7 +288,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         }
 
         
-        //traversing through all the records
+        //traverse through all the records
         while(sqlite3_step(stmt) == SQLITE_ROW){
             let id = sqlite3_column_int(stmt, 0)
             let date = String(cString: sqlite3_column_text(stmt, 1))
@@ -299,7 +296,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             let emotion = String(cString: sqlite3_column_text(stmt, 3))
             
             
-            //adding values to list
+            //add values to list
             moodList.append(Moods(id: Int(id), date: String(describing: date), time: String(describing: time), emotion: String(describing: emotion)))
         }
         
