@@ -32,7 +32,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         case 18..<22:
             timestring = "Evening"
         default:
-            timestring = "Bed Time"
+            timestring = "Bedtime"
         }
         
         //db file
@@ -44,12 +44,12 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         }
         
         //create table
-       /*
+       
         if sqlite3_exec(db, "DROP TABLE Mood", nil, nil, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error removing table: \(errmsg)")
         }
-        */
+        
         if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Mood (id INTEGER PRIMARY KEY AUTOINCREMENT, thedate TEXT, thetime TEXT, emotion TEXT)", nil, nil, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error creating table: \(errmsg)")
@@ -59,12 +59,15 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         
         if moodList.count>0{
             isready = false
+        }else if moodList.count == 1 && timestring == "Bedtime"{
+            isready = true
+            timestring = "Overall"
         }else{
             isready = true
         }
         
         
-        if isready {
+        if isready{
             circle.image = #imageLiteral(resourceName: "green")
             inputnow.setTitle("Input data now!", for: .normal)
             inputnow.isEnabled = true
@@ -171,7 +174,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         alert.preferredAction = OKAction
         
         
-        if moodList.count > 0 {
+        if false{//moodList.count > 0 || moodList.count == 1 && timestring == "Overall"{
             self.present(already, animated: true, completion: nil)
         }else{
             self.present(alert, animated: true, completion: nil)

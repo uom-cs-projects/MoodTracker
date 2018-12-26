@@ -20,12 +20,14 @@ private struct Constants {
 
 @IBDesignable class GraphView: UIView {
     
+
     var graphPoints = getgraphvalues.returnnumbers()
     // 1
     @IBInspectable var startColor: UIColor = .red
     @IBInspectable var endColor: UIColor = .green
     
     override func draw(_ rect: CGRect) {
+        graphPoints = getgraphvalues.returnnumbers()
         let width = rect.width
         let height = rect.height
         let path = UIBezierPath(roundedRect: rect,
@@ -167,7 +169,7 @@ class getgraphvalues{
     static var moodList = [Moods]()
     static var count = 0
     static var db: OpaquePointer?
-    
+    static var iteration = 2
     class func returnnumbers() -> [Int] {
         
         var activation = [0,0,0,0,0,0,0]
@@ -258,7 +260,24 @@ class getgraphvalues{
         
         moodList.removeAll()
         
-        let queryString = "SELECT * FROM Mood"
+        var queryString = "SELECT * FROM Mood"
+        
+        switch iteration {
+        case 1:
+            queryString = "SELECT * FROM Mood where thetime is \"morning\""
+        case 2:
+            queryString = "SELECT * FROM Mood where thetime is \"lunch\""
+        case 3:
+            queryString = "SELECT * FROM Mood where thetime is \"afternoon\""
+        case 4:
+            queryString = "SELECT * FROM Mood where thetime is \"evening\""
+        case 5:
+            queryString = "SELECT * FROM Mood where thetime is \"bedtime\""
+        default:
+            queryString = "SELECT * FROM Mood where thetime is \"overall\""
+        }
+        
+        
         var stmt:OpaquePointer?
 
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
@@ -266,7 +285,7 @@ class getgraphvalues{
             print("error preparing insert: \(errmsg)")
             return
         }
-        
+
         //traverse through all the moods
         while(sqlite3_step(stmt) == SQLITE_ROW){
             let id = sqlite3_column_int(stmt, 0)
