@@ -20,7 +20,6 @@ private struct Constants {
 
 @IBDesignable class GraphView: UIView {
     
-
     var graphPoints = getgraphvalues.returnnumbers()
     // 1
     @IBInspectable var startColor: UIColor = .red
@@ -163,13 +162,16 @@ private struct Constants {
         linePath.lineWidth = 1.0
         linePath.stroke()
     }
+    
+    
+    
 }
 
 class getgraphvalues{
     static var moodList = [Moods]()
     static var count = 0
     static var db: OpaquePointer?
-    static var iteration = 2
+    static var iteration = 3
     class func returnnumbers() -> [Int] {
         
         var activation = [0,0,0,0,0,0,0]
@@ -299,4 +301,7 @@ class getgraphvalues{
         }
         count = 0
     }
+    
+    
+    
 }

@@ -13,27 +13,16 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
 
    var isready = true
     
+    override func viewWillAppear(_ animated: Bool) {
+        setcircle()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         textbox.delegate = self
         currentbutton = alertbutton
-        let date = Date()
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: date)
-        switch hour {
-        case 5..<11:
-            timestring = "Morning"
-        case 11..<15:
-            timestring = "Lunch"
-        case 15..<18:
-            timestring = "Afternoon"
-        case 18..<22:
-            timestring = "Evening"
-        default:
-            timestring = "Bedtime"
-        }
+
         
         //db file
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) .appendingPathComponent("MoodDatabase.sqlite")
@@ -50,6 +39,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             print("error removing table: \(errmsg)")
         }
         
+        
         if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Mood (id INTEGER PRIMARY KEY AUTOINCREMENT, thedate TEXT, thetime TEXT, emotion TEXT)", nil, nil, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error creating table: \(errmsg)")
@@ -57,13 +47,34 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         
         readValues()
         
-        if moodList.count>0{
-            isready = false
+        setcircle()
+        
+    }
+
+    func setcircle(){
+        let date = Date()
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        switch hour {
+        case 5..<11:
+            timestring = "Morning"
+        case 11..<15:
+            timestring = "Lunch"
+        case 15..<18:
+            timestring = "Afternoon"
+        case 18..<22:
+            timestring = "Evening"
+        default:
+            timestring = "Bedtime"
+        }
+        
+        if moodList.count==0{
+            isready = true
         }else if moodList.count == 1 && timestring == "Bedtime"{
             isready = true
             timestring = "Overall"
         }else{
-            isready = true
+            isready = false
         }
         
         
@@ -77,9 +88,8 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             inputnow.isEnabled = false
         }
         
+        
     }
-
-    
     
     var db: OpaquePointer?
     var currentbutton : UIButton?
@@ -91,6 +101,20 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     @IBOutlet var inputnow: UIButton!
     
     @IBOutlet var emotionbuttons: [UIButton]!
+    
+    func resetpage(){
+        circle.image = #imageLiteral(resourceName: "orange")
+        inputnow.setTitle("Please wait until input time", for: .normal)
+        inputnow.isEnabled = false
+        submit.isHidden = true
+        submit.isEnabled = false
+        for curbutton in emotionbuttons {
+            curbutton.isHidden = true
+        }
+        circle.isHidden = false
+        inputnow.isHidden = false
+        
+    }
     
     @IBAction func inputnow(_ sender: Any) {
         for curbutton in emotionbuttons {
@@ -167,14 +191,27 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Default action"), style: .cancel, handler: { _ in
         })
         let OKAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in
-            self.textbox.text = self.currentemotion;
+            self.textbox.text = self.currentemotion; self.resetpage();
         })
         alert.addAction(cancelAction)
         alert.addAction(OKAction)
         alert.preferredAction = OKAction
         
         
-        if false{//moodList.count > 0 || moodList.count == 1 && timestring == "Overall"{
+        let emptymessage = "Please Select an Emotion"
+        let empty = UIAlertController(title: "No Selection", message: emptymessage, preferredStyle: .alert)
+        let emptyOKAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in
+        })
+        empty.addAction(emptyOKAction)
+        
+        
+        
+        //if false{
+        //if moodList.count > 0 || moodList.count == 1 && timestring == "Overall"{
+        if currentemotion == ""{
+            self.present(empty, animated: true, completion: nil)
+        }
+        else if !isready{
             self.present(already, animated: true, completion: nil)
         }else{
             self.present(alert, animated: true, completion: nil)
