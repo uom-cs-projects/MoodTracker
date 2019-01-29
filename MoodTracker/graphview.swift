@@ -20,13 +20,20 @@ private struct Constants {
 
 @IBDesignable class GraphView: UIView {
     
-    var graphPoints = getgraphvalues.returnnumbers()
+    //var graphPoints = getgraphvalues.returnnumbers(myvalue: 4)
+    var graphPoints: [Int] = []// = getgraphvalues.returnnumbers(myvalue: 4)
     // 1
     @IBInspectable var startColor: UIColor = .red
     @IBInspectable var endColor: UIColor = .green
     
     override func draw(_ rect: CGRect) {
-        graphPoints = getgraphvalues.returnnumbers()
+        
+        if graphPoints == []{
+                   graphPoints = getgraphvalues.returnnumbers(myvalue: 4, selectedsegment: 0)
+        }
+        
+        
+        //graphPoints = getgraphvalues.returnnumbers(myvalue: 4)
         let width = rect.width
         let height = rect.height
         let path = UIBezierPath(roundedRect: rect,
@@ -167,13 +174,17 @@ private struct Constants {
     
 }
 
+
+
 class getgraphvalues{
     static var moodList = [Moods]()
     static var count = 0
     static var db: OpaquePointer?
-    static var iteration = 3
-    class func returnnumbers() -> [Int] {
-        
+    static var iteration = 4
+    var myvalue = 4
+    
+    class func returnnumbers(myvalue: Int, selectedsegment: Int) -> [Int] {
+        print(myvalue)
         var activation = [0,0,0,0,0,0,0]
         var pleasedness = [0,0,0,0,0,0,0]
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) .appendingPathComponent("MoodDatabase.sqlite")
@@ -182,7 +193,7 @@ class getgraphvalues{
         if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
             print("error opening database")
         }
-        readValues()
+        readValues(myvalue: myvalue)
         
         var position = 0
         for currentmood in moodList {
@@ -255,16 +266,19 @@ class getgraphvalues{
             }
             position = position + 1
         }
-                return activation
+        if selectedsegment == 0 {
+            return activation
+        }
+        else{return pleasedness}
     }
     
-    class func readValues(){
+    class func readValues(myvalue: Int){
         
         moodList.removeAll()
         
         var queryString = "SELECT * FROM Mood"
         
-        switch iteration {
+        switch myvalue {
         case 1:
             queryString = "SELECT * FROM Mood where thetime is \"morning\""
         case 2:

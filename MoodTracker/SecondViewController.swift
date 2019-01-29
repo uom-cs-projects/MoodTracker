@@ -33,12 +33,12 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         }
         
         //create table
-       
+       /*
         if sqlite3_exec(db, "DROP TABLE Mood", nil, nil, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error removing table: \(errmsg)")
         }
-        
+        */
         
         if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Mood (id INTEGER PRIMARY KEY AUTOINCREMENT, thedate TEXT, thetime TEXT, emotion TEXT)", nil, nil, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)

@@ -60,9 +60,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zky-bX-e4W">
-                                <rect key="frame" x="91" y="654" width="44" height="30"/>
+                                <rect key="frame" x="167" y="618" width="68" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="toggle"/>
+                                <state key="normal" title="lunchtime"/>
+                                <connections>
+                                    <action selector="lunchtime:" destination="0Em-i4-UWG" eventType="touchUpInside" id="6nx-VQ-PNX"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Graph View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="vwP-ZC-15J">
                                 <rect key="frame" x="118" y="134" width="179" height="43"/>
@@ -88,6 +91,49 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oq5-Ut-UPg">
+                                <rect key="frame" x="86" y="618" width="67" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="afternoon"/>
+                                <connections>
+                                    <action selector="afternoon:" destination="0Em-i4-UWG" eventType="touchUpInside" id="MMT-Gt-hC6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ypp-40-9sS">
+                                <rect key="frame" x="255" y="618" width="54" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="evening"/>
+                                <connections>
+                                    <action selector="evening:" destination="0Em-i4-UWG" eventType="touchUpInside" id="jn0-4L-38q"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zw8-lx-Azb">
+                                <rect key="frame" x="331" y="618" width="45" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="overall"/>
+                                <connections>
+                                    <action selector="overall:" destination="0Em-i4-UWG" eventType="touchUpInside" id="FBL-h6-PpV"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="oK0-BZ-KnD">
+                                <rect key="frame" x="123" y="695" width="157" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Happiness"/>
+                                    <segment title="Activation"/>
+                                </segments>
+                                <connections>
+                                    <action selector="happiness:" destination="0Em-i4-UWG" eventType="valueChanged" id="snX-wX-DBi"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bhs-Oe-28X">
+                                <rect key="frame" x="0.0" y="618" width="57" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="morning"/>
+                                <connections>
+                                    <action selector="morning:" destination="0Em-i4-UWG" eventType="touchUpInside" id="g0A-lb-PjQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -99,6 +145,7 @@
                     <tabBarItem key="tabBarItem" title="Graph" id="apn-xx-ioh"/>
                     <connections>
                         <outlet property="GraphView" destination="VQX-XH-mVY" id="aaC-Z8-vCs"/>
+                        <outlet property="happytoggle" destination="oK0-BZ-KnD" id="xpe-Zd-PE9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sEG-Py-V1a" userLabel="First Responder" sceneMemberID="firstResponder"/>

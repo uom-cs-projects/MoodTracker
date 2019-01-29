@@ -22,12 +22,71 @@ class ThirdViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
+        //GraphView.setNeedsDisplay()
+        //setupGraphDisplay()
+
+    }
+    
+    var currenttogglevalue = 0
+    var currenttimevalue = 5
+    
+    @IBAction func morning(_ sender: UIButton) {
+        
+        currenttimevalue = 1
+            
+        GraphView.graphPoints = getgraphvalues.returnnumbers(myvalue: currenttimevalue, selectedsegment: currenttogglevalue)
         GraphView.setNeedsDisplay()
         setupGraphDisplay()
     }
     
-    func setupGraphDisplay() {
+    @IBAction func afternoon(_ sender: UIButton) {
+        
+        currenttimevalue = 2
+        
+       GraphView.graphPoints = getgraphvalues.returnnumbers(myvalue: currenttimevalue, selectedsegment: currenttogglevalue)
+        GraphView.setNeedsDisplay()
+        setupGraphDisplay()
+    }
     
+    @IBAction func lunchtime(_ sender: UIButton) {
+        
+        currenttimevalue = 3
+        GraphView.graphPoints = getgraphvalues.returnnumbers(myvalue: currenttimevalue, selectedsegment: currenttogglevalue)
+        GraphView.setNeedsDisplay()
+        setupGraphDisplay()
+    }
+    
+    @IBAction func evening(_ sender: UIButton) {
+        
+        currenttimevalue = 4
+        
+        GraphView.graphPoints = getgraphvalues.returnnumbers(myvalue: currenttimevalue, selectedsegment: currenttogglevalue)
+        GraphView.setNeedsDisplay()
+        setupGraphDisplay()
+    }
+    
+
+    @IBAction func overall(_ sender: UIButton) {
+        
+        currenttimevalue = 5
+        GraphView.graphPoints = getgraphvalues.returnnumbers(myvalue: currenttimevalue, selectedsegment: currenttogglevalue)
+        GraphView.setNeedsDisplay()
+        setupGraphDisplay()
+    }
+    
+    
+    @IBAction func happiness(_ sender: UISegmentedControl) {
+        
+        currenttogglevalue = happytoggle.selectedSegmentIndex
+        GraphView.graphPoints = getgraphvalues.returnnumbers(myvalue: currenttimevalue, selectedsegment: currenttogglevalue)
+        GraphView.setNeedsDisplay()
+        setupGraphDisplay()
+    }
+    
+    @IBOutlet var happytoggle: UISegmentedControl!
+    
+    func setupGraphDisplay() {
+        
     }
     /*
     // MARK: - Navigation
