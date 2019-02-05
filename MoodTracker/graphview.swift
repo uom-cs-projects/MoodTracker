@@ -184,7 +184,6 @@ class getgraphvalues{
     var myvalue = 4
     
     class func returnnumbers(myvalue: Int, selectedsegment: Int) -> [Int] {
-        print(myvalue)
         var activation = [0,0,0,0,0,0,0]
         var pleasedness = [0,0,0,0,0,0,0]
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) .appendingPathComponent("MoodDatabase.sqlite")

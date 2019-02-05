@@ -12,10 +12,25 @@ import SQLite3
 class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
 
     var isready = true
-    let daily = false
+    var daily = false
     override func viewWillAppear(_ animated: Bool) {
+        daily = calculatedaily()
         setisready()
         setcircle()
+    }
+    
+    func calculatedaily()-> Bool{
+        
+        let today = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy/MM/dd"
+        let secondmonday = dateFormatter.date(from: "2019/02/18") ?? Date() //start of second week
+
+        if today < secondmonday{//if we are still in first week
+            return true
+        }else{
+            return false
+        }
     }
     
     override func viewDidLoad() {
@@ -46,15 +61,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error creating table: \(errmsg)")
         }
-        /*
-        prepreadvals()
-        readValues()
-        print("moodliest")
-        print(moodList.count)
-        setcircle()
-        */
         
-        //new:
         setisready()
         setcircle()
     }
@@ -115,61 +122,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             timestring = "Bedtime"
         }
     }
-    
-    func prepreadvals(){
-        let date = Date()
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: date)
-        switch hour {
-        case 5..<11:
-            timestring = "Morning"
-        case 11..<15:
-            timestring = "Lunch"
-        case 15..<18:
-            timestring = "Afternoon"
-        case 18..<22:
-            timestring = "Evening"
-        default:
-            timestring = "Bedtime"
-        }
-        
-        if daily == true {
-            timestring = "Overall"
-        }else{
-            
-        }
-        
-    }
-    
-    
-    /*func setcircle(){
-        let date = Date()
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: date)
-        switch hour {
-        case 5..<11:
-            timestring = "Morning"
-        case 11..<15:
-            timestring = "Lunch"
-        case 15..<18:
-            timestring = "Afternoon"
-        case 18..<22:
-            timestring = "Evening"
-        default:
-            timestring = "Bedtime"
-        }
-        
-    
-        if moodList.count==0{
-            isready = true
-        }else if moodList.count == 1 && timestring == "Bedtime"{
-            isready = true
-            timestring = "Overall"
-        }else{
-            isready = false
-        }
-       */
-       func setcircle(){
+    func setcircle(){
         if isready{
             circle.image = #imageLiteral(resourceName: "green")
             inputnow.setTitle("Input data now!", for: .normal)
@@ -300,10 +253,6 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         })
         empty.addAction(emptyOKAction)
         
-        
-        
-        //if false{
-        //if moodList.count > 0 || moodList.count == 1 && timestring == "Overall"{
         if currentemotion == ""{
             self.present(empty, animated: true, completion: nil)
         }

@@ -20,16 +20,47 @@ class ThirdViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+
     }
     override func viewWillAppear(_ animated: Bool) {
-        //GraphView.setNeedsDisplay()
-        //setupGraphDisplay()
 
+        if calculatedaily() { //if only once per day
+            for curbutton in timebuttons{
+                curbutton.isHidden = true
+            }
+        }else{
+            for curbutton in timebuttons{
+                curbutton.isHidden = false
+            }
+            currenttimevalue = 6
+            
+        }
+        
+        GraphView.graphPoints = getgraphvalues.returnnumbers(myvalue: currenttimevalue, selectedsegment: currenttogglevalue)
+        GraphView.setNeedsDisplay()
+        setupGraphDisplay()
     }
     
     var currenttogglevalue = 0
-    var currenttimevalue = 5
+    var currenttimevalue = 6
     
+    func calculatedaily()-> Bool{
+        
+        let today = Date()
+        //var secondmonday = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy/MM/dd"
+        let secondmonday = dateFormatter.date(from: "2019/02/18") ?? Date() //start of second week
+        
+        if today < secondmonday{//if we are still in first week
+            return true
+        }else{
+            return false
+        }
+    }
+    
+    
+    @IBOutlet var timebuttons: [UIButton]!
     @IBAction func morning(_ sender: UIButton) {
         
         currenttimevalue = 1

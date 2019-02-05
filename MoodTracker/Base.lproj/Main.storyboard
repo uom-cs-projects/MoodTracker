@@ -154,6 +154,12 @@
                     <connections>
                         <outlet property="GraphView" destination="VQX-XH-mVY" id="aaC-Z8-vCs"/>
                         <outlet property="happytoggle" destination="oK0-BZ-KnD" id="xpe-Zd-PE9"/>
+                        <outletCollection property="timebuttons" destination="Bhs-Oe-28X" collectionClass="NSMutableArray" id="EDC-dD-Gzk"/>
+                        <outletCollection property="timebuttons" destination="Zky-bX-e4W" collectionClass="NSMutableArray" id="Zlg-8Q-PYm"/>
+                        <outletCollection property="timebuttons" destination="Oq5-Ut-UPg" collectionClass="NSMutableArray" id="W7X-gX-3fr"/>
+                        <outletCollection property="timebuttons" destination="Ypp-40-9sS" collectionClass="NSMutableArray" id="4Hv-IW-64r"/>
+                        <outletCollection property="timebuttons" destination="2MB-CH-Yx8" collectionClass="NSMutableArray" id="FG6-8P-RpG"/>
+                        <outletCollection property="timebuttons" destination="zw8-lx-Azb" collectionClass="NSMutableArray" id="Ym9-G5-43U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sEG-Py-V1a" userLabel="First Responder" sceneMemberID="firstResponder"/>
