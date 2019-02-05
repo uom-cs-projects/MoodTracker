@@ -26,7 +26,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         dateFormatter.dateFormat = "yyyy/MM/dd"
         let secondmonday = dateFormatter.date(from: "2019/02/18") ?? Date() //start of second week
 
-        if today < secondmonday{//if we are still in first week
+        if today > secondmonday{//if we are still in first week
             return true
         }else{
             return false
@@ -353,8 +353,6 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         let mytime = timestring.lowercased() as NSString
         var stmt:OpaquePointer?
         
-        print("DOING READ VALUES")
-        print(mytime)
         //prepare query
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)

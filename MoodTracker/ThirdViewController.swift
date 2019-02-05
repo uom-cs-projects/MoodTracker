@@ -52,7 +52,7 @@ class ThirdViewController: UIViewController {
         dateFormatter.dateFormat = "yyyy/MM/dd"
         let secondmonday = dateFormatter.date(from: "2019/02/18") ?? Date() //start of second week
         
-        if today < secondmonday{//if we are still in first week
+        if today > secondmonday{//if we are still in first week
             return true
         }else{
             return false

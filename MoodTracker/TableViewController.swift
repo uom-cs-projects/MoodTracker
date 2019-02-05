@@ -75,7 +75,8 @@ class TableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        //print(moodList.count)
+        print(moodList.count)
+        print("moodList.count")
         return moodList.count
     }
 
@@ -88,8 +89,13 @@ class TableViewController: UITableViewController {
         let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "Cell")
         cell.detailTextLabel?.textColor = .gray
         cell.selectionStyle = .none
-        cell.textLabel!.text = moodList[count].emotion
-        cell.detailTextLabel?.text = moodList[count].date! + " at " + moodList[count].time!
+        //cell.textLabel!.text = moodList[count].emotion
+        print("count")
+        print(count)
+        print(indexPath)
+        print(indexPath[1])
+        cell.textLabel?.text = moodList[indexPath[1]].emotion
+        cell.detailTextLabel?.text = moodList[indexPath[1]].date! + " at " + moodList[indexPath[1]].time!
 
         count = 1 + count
         return cell
