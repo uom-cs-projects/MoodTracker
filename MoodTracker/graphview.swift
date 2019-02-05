@@ -29,7 +29,7 @@ private struct Constants {
     override func draw(_ rect: CGRect) {
         
         if graphPoints == []{
-                   graphPoints = getgraphvalues.returnnumbers(myvalue: 4, selectedsegment: 0)
+                   graphPoints = getgraphvalues.returnnumbers(myvalue: 5, selectedsegment: 0)
         }
         
         
@@ -200,65 +200,65 @@ class getgraphvalues{
             
             switch currentmood.emotion{
             case "alert":
-                activation[position] = 10
-                pleasedness[position] = 5
+                activation[position] = 10+1
+                pleasedness[position] = 5+1
             case "nervous":
-                activation[position] = 9
-                pleasedness[position] = 4
+                activation[position] = 9+1
+                pleasedness[position] = 4+1
             case "cheerful":
-                activation[position] = 9
-                pleasedness[position] = 6
+                activation[position] = 9+1
+                pleasedness[position] = 6+1
             case "angry":
-                activation[position] = 8
-                pleasedness[position] = 3
+                activation[position] = 8+1
+                pleasedness[position] = 3+1
             case "suprised":
-                activation[position] = 8
-                pleasedness[position] = 7
+                activation[position] = 8+1
+                pleasedness[position] = 7+1
             case "stressed":
-                activation[position] = 7
-                pleasedness[position] = 2
+                activation[position] = 7+1
+                pleasedness[position] = 2+1
             case "excited":
-                activation[position] = 7
-                pleasedness[position] = 8
+                activation[position] = 7+1
+                pleasedness[position] = 8+1
             case "irritated":
-                activation[position] = 6
-                pleasedness[position] = 1
+                activation[position] = 6+1
+                pleasedness[position] = 1+1
             case "delighted":
-                activation[position] = 6
-                pleasedness[position] = 9
+                activation[position] = 6+1
+                pleasedness[position] = 9+1
             case "sad":
-                activation[position] = 5
-                pleasedness[position] = 0
+                activation[position] = 5+1
+                pleasedness[position] = 0+1
             case "happy":
-                activation[position] = 5
-                pleasedness[position] = 10
+                activation[position] = 5+1
+                pleasedness[position] = 10+1
             case "depressed":
-                activation[position] = 4
-                pleasedness[position] = 1
+                activation[position] = 4+1
+                pleasedness[position] = 1+1
             case "pleasure":
-                activation[position] = 4
-                pleasedness[position] = 9
+                activation[position] = 4+1
+                pleasedness[position] = 9+1
             case "bored":
-                activation[position] = 3
-                pleasedness[position] = 2
+                activation[position] = 3+1
+                pleasedness[position] = 2+1
             case "hopeful":
-                activation[position] = 3
-                pleasedness[position] = 8
+                activation[position] = 3+1
+                pleasedness[position] = 8+1
             case "fatigued":
-                activation[position] = 2
-                pleasedness[position] = 3
+                activation[position] = 2+1
+                pleasedness[position] = 3+1
             case "content":
-                activation[position] = 2
-                pleasedness[position] = 7
+                activation[position] = 2+1
+                pleasedness[position] = 7+1
             case "tired":
-                activation[position] = 1
-                pleasedness[position] = 4
+                activation[position] = 1+1
+                pleasedness[position] = 4+1
             case "relaxed":
-                activation[position] = 1
-                pleasedness[position] = 6
+                activation[position] = 1+1
+                pleasedness[position] = 6+1
             case "numb":
-                activation[position] = 0
-                pleasedness[position] = 5
+                activation[position] = 0+1
+                pleasedness[position] = 5+1
                 
             default:
                 activation[position] = 0

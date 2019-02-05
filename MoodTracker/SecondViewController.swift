@@ -11,9 +11,10 @@ import SQLite3
 
 class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
 
-   var isready = true
-    
+    var isready = true
+    let daily = false
     override func viewWillAppear(_ animated: Bool) {
+        setisready()
         setcircle()
     }
     
@@ -23,6 +24,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         textbox.delegate = self
         currentbutton = alertbutton
 
+        
         
         //db file
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) .appendingPathComponent("MoodDatabase.sqlite")
@@ -44,14 +46,77 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error creating table: \(errmsg)")
         }
-        
+        /*
+        prepreadvals()
         readValues()
-        
+        print("moodliest")
+        print(moodList.count)
         setcircle()
+        */
         
+        //new:
+        setisready()
+        setcircle()
     }
 
-    func setcircle(){
+    func setisready(){
+        if daily {
+            timestring = "Overall"
+            readValues()
+            if moodList.count==0{
+                isready = true
+            }else{
+                isready = false
+            }
+        }else{
+            settimestring()
+            print(timestring)
+            readValues()
+            print(moodList.count)
+            if moodList.count == 0{
+                isready = true
+            }else if moodList.count == 1 && timestring == "Bedtime"{
+                timestring = "Overall"
+                isready = true
+            }else{
+                isready = false
+            }
+            print("isready")
+            print(isready)
+            if timestring == "Overall"{
+                readValues()
+                print(moodList.count)
+                if moodList.count == 0{
+                    isready = true
+                }else{
+                    isready = false
+                }
+            }
+        }
+
+        print(isready)
+        
+    }
+    
+    func settimestring(){
+        let date = Date()
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        switch hour {
+        case 5..<11:
+            timestring = "Morning"
+        case 11..<15:
+            timestring = "Lunch"
+        case 15..<18:
+            timestring = "Afternoon"
+        case 18..<19:
+            timestring = "Evening"
+        default:
+            timestring = "Bedtime"
+        }
+    }
+    
+    func prepreadvals(){
         let date = Date()
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: date)
@@ -68,6 +133,33 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             timestring = "Bedtime"
         }
         
+        if daily == true {
+            timestring = "Overall"
+        }else{
+            
+        }
+        
+    }
+    
+    
+    /*func setcircle(){
+        let date = Date()
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        switch hour {
+        case 5..<11:
+            timestring = "Morning"
+        case 11..<15:
+            timestring = "Lunch"
+        case 15..<18:
+            timestring = "Afternoon"
+        case 18..<22:
+            timestring = "Evening"
+        default:
+            timestring = "Bedtime"
+        }
+        
+    
         if moodList.count==0{
             isready = true
         }else if moodList.count == 1 && timestring == "Bedtime"{
@@ -76,16 +168,20 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         }else{
             isready = false
         }
-        
-        
+       */
+       func setcircle(){
         if isready{
             circle.image = #imageLiteral(resourceName: "green")
             inputnow.setTitle("Input data now!", for: .normal)
             inputnow.isEnabled = true
+            submit.isHidden = false
+            submit.isEnabled = true
         }else{
             circle.image = #imageLiteral(resourceName: "orange")
             inputnow.setTitle("Please wait until input time", for: .normal)
             inputnow.isEnabled = false
+            submit.isHidden = true
+            submit.isEnabled = false
         }
         
         
@@ -308,6 +404,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         let mytime = timestring.lowercased() as NSString
         var stmt:OpaquePointer?
         
+        print("DOING READ VALUES")
         print(mytime)
         //prepare query
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{

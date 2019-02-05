@@ -41,7 +41,7 @@ class ThirdViewController: UIViewController {
     
     @IBAction func afternoon(_ sender: UIButton) {
         
-        currenttimevalue = 2
+        currenttimevalue = 3
         
        GraphView.graphPoints = getgraphvalues.returnnumbers(myvalue: currenttimevalue, selectedsegment: currenttogglevalue)
         GraphView.setNeedsDisplay()
@@ -50,7 +50,7 @@ class ThirdViewController: UIViewController {
     
     @IBAction func lunchtime(_ sender: UIButton) {
         
-        currenttimevalue = 3
+        currenttimevalue = 2
         GraphView.graphPoints = getgraphvalues.returnnumbers(myvalue: currenttimevalue, selectedsegment: currenttogglevalue)
         GraphView.setNeedsDisplay()
         setupGraphDisplay()
@@ -66,9 +66,16 @@ class ThirdViewController: UIViewController {
     }
     
 
+    @IBAction func bedtime(_ sender: UIButton) {
+        currenttimevalue = 5
+        
+        GraphView.graphPoints = getgraphvalues.returnnumbers(myvalue: currenttimevalue, selectedsegment: currenttogglevalue)
+        GraphView.setNeedsDisplay()
+        setupGraphDisplay()
+    }
     @IBAction func overall(_ sender: UIButton) {
         
-        currenttimevalue = 5
+        currenttimevalue = 6
         GraphView.graphPoints = getgraphvalues.returnnumbers(myvalue: currenttimevalue, selectedsegment: currenttogglevalue)
         GraphView.setNeedsDisplay()
         setupGraphDisplay()
