@@ -127,8 +127,10 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             circle.image = #imageLiteral(resourceName: "green")
             inputnow.setTitle("Input data now!", for: .normal)
             inputnow.isEnabled = true
-            submit.isHidden = false
+            //submit.isHidden = false
             submit.isEnabled = true
+            let submitstring = "Submit Mood for " + timestring
+            submit.setTitle(submitstring, for: .normal)
         }else{
             circle.image = #imageLiteral(resourceName: "orange")
             inputnow.setTitle("Please wait until input time", for: .normal)
@@ -172,6 +174,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         }
         circle.isHidden = true
         inputnow.isHidden = true
+        submit.isHidden = false
     }
     @IBOutlet var circle: UIImageView!
     
