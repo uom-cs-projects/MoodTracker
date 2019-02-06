@@ -9,7 +9,7 @@
 import UIKit
 import SQLite3
 
-class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
+class SecondViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
 
     var isready = true
     var daily = false
@@ -36,7 +36,6 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        textbox.delegate = self
         currentbutton = alertbutton
 
         
@@ -186,43 +185,8 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         (sender as AnyObject).setTitleColor(.red, for: .normal)
     }
     @IBOutlet weak var submit: UIButton!
-    @IBOutlet weak var textbox: UITextField!
-    @IBOutlet weak var picview: UIImageView!
-    @IBAction func tappic(_ sender: UITapGestureRecognizer) {
-        // Hide the keyboard.
-        textbox.resignFirstResponder()
-        
-        // UIImagePickerController is a view controller that lets a user pick media from their photo library.
-        let imagePickerController = UIImagePickerController()
-        
-        // Only allow photos to be picked, not taken.
-        imagePickerController.sourceType = .photoLibrary
-        
-        // Make sure ViewController is notified when the user picks an image.
-        imagePickerController.delegate = self
-        present(imagePickerController, animated: true, completion: nil)
-    }
-    
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        // Dismiss the picker if the user canceled.
-        dismiss(animated: true, completion: nil)
-    }
-    
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
-        // The info dictionary may contain multiple representations of the image. You want to use the original.
-        guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
-            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
-        }
-        
-        // Set photoImageView to display the selected image.
-        picview.image = selectedImage
-        
-        // Dismiss the picker.
-        dismiss(animated: true, completion: nil)
-    }
+
+
     @IBAction func clicksubmit(_ sender: Any) {
         
         readValues()
@@ -230,7 +194,6 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         let alreadysubmitted = "You have already submitted " + String(moodList.count) + " today"
         let already = UIAlertController(title: "Already Done!", message: alreadysubmitted, preferredStyle: .alert)
         let alreadyOKAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in
-            self.textbox.text = self.currentemotion;
         })
         
         already.addAction(alreadyOKAction)
@@ -243,7 +206,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Default action"), style: .cancel, handler: { _ in
         })
         let OKAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in
-            self.textbox.text = self.currentemotion; self.resetpage();
+            self.resetpage();
         })
         alert.addAction(cancelAction)
         alert.addAction(OKAction)
@@ -264,8 +227,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         }else{
             self.present(alert, animated: true, completion: nil)
         
-        
-            //getting values from textfields
+    
             let emotion = currentemotion.lowercased() as NSString
             let thetime = (timestring.lowercased()) as NSString
             
@@ -274,18 +236,6 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             theFormatter.dateFormat = "yyyy-MM-dd";
             let datestring = theFormatter.string(from: Date()) as NSString
             print(datestring)
-            /*
-            //validating that values are not empty
-            if(name?.isEmpty)!{
-                textFieldName.layer.borderColor = UIColor.red.cgColor
-                return
-            }
-            
-            if(powerRanking?.isEmpty)!{
-                textFieldName.layer.borderColor = UIColor.red.cgColor
-                return
-            }
-            */
             
             //creating a statement
             var stmt: OpaquePointer?
@@ -328,15 +278,6 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             //displaying a success message
             print("Mood saved successfully")
         }
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        // Hide the keyboard.
-        textField.resignFirstResponder()
-        return true
-    }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        textbox.text = textField.text
     }
     
     override func didReceiveMemoryWarning() {

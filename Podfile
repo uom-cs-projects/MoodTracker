@@ -6,17 +6,14 @@ target 'MoodTracker' do
   use_frameworks!
 
   # Pods for MoodTracker
-  pod 'RealmSwift'
 
   target 'MoodTrackerTests' do
     inherit! :search_paths
     # Pods for testing
-    pod 'RealmSwift'
   end
 
   target 'MoodTrackerUITests' do
     inherit! :search_paths
-    pod 'RealmSwift'
     # Pods for testing
   end
 

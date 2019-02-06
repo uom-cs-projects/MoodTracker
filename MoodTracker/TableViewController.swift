@@ -10,9 +10,9 @@ import UIKit
 import SQLite3
 class TableViewController: UITableViewController {
 
+    @IBOutlet var tabletabbar: UITabBarItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
