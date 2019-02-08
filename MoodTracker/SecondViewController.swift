@@ -201,7 +201,7 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         
         //set up not submitted yet
-        let alertmessage = "Submitting \"" + currentemotion.lowercased() + "\" as your emotion at " + (timestring.lowercased()) + String(moodList.count)
+        let alertmessage = "Submitting \"" + currentemotion.lowercased() + "\" as your emotion at " + (timestring.lowercased())
         let alert = UIAlertController(title: "Please Confirm your Data", message: alertmessage, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Default action"), style: .cancel, handler: { _ in
         })

@@ -26,6 +26,8 @@ class TableViewController: UITableViewController {
             print("error opening database")
         }
           readValues()
+        navigationController?.navigationBar.topItem?.title="Table"
+        navigationController?.navigationBar.prefersLargeTitles = true
         
         
     }
