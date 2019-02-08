@@ -63,6 +63,9 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         setisready()
         setcircle()
+        
+        let titlestring = "Log " + String(timestring.prefix(1)).capitalized + String(timestring.dropFirst()) + " Mood"
+        navigationController?.navigationBar.topItem?.title=titlestring
     }
 
     func setisready(){
