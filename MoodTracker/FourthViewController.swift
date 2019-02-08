@@ -15,7 +15,13 @@ class FourthViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        Infobox.text = "This app is a third year project research application with the University of Manchester. \nYou will spend a week inputting your mood throughout the day. \nThen you will spend a week inputting your mood throughout the day and at the end of the day.\nWe will use this data to figure out which is a better way of collecting your mood."
+        
+        Infobox.text = "This app is a third year project research application with the University of Manchester. \nYou will spend a week inputting your mood throughout the day.\nThen you will spend a week inputting your mood throughout the day and at the end of the day\nWe will use this data to figure out which is a better way of collecting your mood.\n\n\nResources for  Low Mood:\nwww.nhs.uk/conditions/stress-anxiety-depression/\n\nwww.mind.org.uk/information-support/\n\nwww.selfhelpservices.org.uk\n\nwww.studentsagainstdepression.org\n\nUnder 16s:\nhttps://youngminds.org.uk/find-help/\n\nHelplines:\nwww.nhs.uk/conditions/stress-anxiety-depression/mental-health-helplines/\n\nhttp://manchester.nightline.ac.uk"
+        
+        
+        
+        navigationController?.navigationBar.topItem?.title="Help"
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     

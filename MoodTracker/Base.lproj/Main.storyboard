@@ -27,7 +27,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VQX-XH-mVY" userLabel="Graphview" customClass="GraphView" customModule="MoodTracker" customModuleProvider="target">
-                                <rect key="frame" x="55" y="228.66666666666663" width="304" height="250"/>
+                                <rect key="frame" x="55" y="156" width="304" height="250"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="V2P-35-RzV"/>
@@ -66,17 +66,6 @@
                                     <action selector="overall:" destination="0Em-i4-UWG" eventType="touchUpInside" id="FBL-h6-PpV"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="oK0-BZ-KnD">
-                                <rect key="frame" x="123" y="695" width="157" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Happiness"/>
-                                    <segment title="Activation"/>
-                                </segments>
-                                <connections>
-                                    <action selector="happiness:" destination="0Em-i4-UWG" eventType="valueChanged" id="snX-wX-DBi"/>
-                                </connections>
-                            </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bhs-Oe-28X">
                                 <rect key="frame" x="20" y="512" width="57" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -128,24 +117,27 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Sunday"/>
                             </button>
-                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bbj-CO-4yK">
-                                <rect key="frame" x="0.0" y="20" width="414" height="96"/>
-                                <items>
-                                    <navigationItem title="Graph" largeTitleDisplayMode="always" id="gXI-Ut-1Qk"/>
-                                </items>
-                            </navigationBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="oK0-BZ-KnD">
+                                <rect key="frame" x="128.66666666666666" y="428" width="156.99999999999997" height="29"/>
+                                <segments>
+                                    <segment title="Happiness"/>
+                                    <segment title="Activation"/>
+                                </segments>
+                                <connections>
+                                    <action selector="happiness:" destination="0Em-i4-UWG" eventType="valueChanged" id="snX-wX-DBi"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="bbj-CO-4yK" firstAttribute="top" secondItem="DmK-uV-hde" secondAttribute="top" id="95X-SR-oMW"/>
-                            <constraint firstItem="VQX-XH-mVY" firstAttribute="centerY" secondItem="DmK-uV-hde" secondAttribute="centerY" id="P33-Z2-nbC"/>
-                            <constraint firstItem="bbj-CO-4yK" firstAttribute="centerX" secondItem="VQX-XH-mVY" secondAttribute="centerX" id="Ut5-W2-8LR"/>
-                            <constraint firstItem="bbj-CO-4yK" firstAttribute="leading" secondItem="2hu-xJ-8EK" secondAttribute="leading" id="dKi-3S-tuc"/>
+                            <constraint firstItem="oK0-BZ-KnD" firstAttribute="centerX" secondItem="DmK-uV-hde" secondAttribute="centerX" id="ZR7-xf-eiB"/>
+                            <constraint firstItem="oK0-BZ-KnD" firstAttribute="top" secondItem="VQX-XH-mVY" secondAttribute="bottom" constant="22" id="dzg-r9-rLQ"/>
                             <constraint firstItem="VQX-XH-mVY" firstAttribute="centerX" secondItem="DmK-uV-hde" secondAttribute="centerX" id="gZK-oj-4zl"/>
+                            <constraint firstItem="VQX-XH-mVY" firstAttribute="top" secondItem="DmK-uV-hde" secondAttribute="top" constant="40" id="pcz-xb-r5C"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DmK-uV-hde"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Graph" image="graphicon" id="apn-xx-ioh"/>
+                    <navigationItem key="navigationItem" id="kuO-R1-cNf"/>
                     <connections>
                         <outlet property="GraphView" destination="VQX-XH-mVY" id="aaC-Z8-vCs"/>
                         <outlet property="happytoggle" destination="oK0-BZ-KnD" id="xpe-Zd-PE9"/>
@@ -159,7 +151,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sEG-Py-V1a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1492.753623188406" y="-318.08035714285711"/>
+            <point key="canvasLocation" x="2400" y="-318.75"/>
         </scene>
         <!--Input-->
         <scene sceneID="wg7-f3-ORb">
@@ -591,20 +583,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V1K-cW-ahb">
-                                <rect key="frame" x="0.0" y="30" width="414" height="96"/>
-                                <items>
-                                    <navigationItem title="Help Page" largeTitleDisplayMode="always" id="TnU-vD-G0w"/>
-                                </items>
-                            </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RHw-x5-6Ze">
-                                <rect key="frame" x="20" y="126" width="374" height="541"/>
+                                <rect key="frame" x="20" y="116" width="374" height="551"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Placeholder" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gta-Qg-4ZU">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="541"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Placeholder" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gta-Qg-4ZU">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="551"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                     </textView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -620,22 +607,19 @@
                         <constraints>
                             <constraint firstItem="YmQ-tU-hHS" firstAttribute="trailing" secondItem="RHw-x5-6Ze" secondAttribute="trailing" constant="20" id="2mO-H9-X11"/>
                             <constraint firstItem="YmQ-tU-hHS" firstAttribute="bottom" secondItem="RHw-x5-6Ze" secondAttribute="bottom" constant="20" id="4fZ-Vk-6KW"/>
-                            <constraint firstItem="RHw-x5-6Ze" firstAttribute="centerX" secondItem="V1K-cW-ahb" secondAttribute="centerX" id="9fx-0g-5Mj"/>
-                            <constraint firstItem="V1K-cW-ahb" firstAttribute="top" secondItem="YmQ-tU-hHS" secondAttribute="top" constant="10" id="B9S-Rm-AOJ"/>
+                            <constraint firstItem="gta-Qg-4ZU" firstAttribute="top" secondItem="YmQ-tU-hHS" secondAttribute="top" id="Jmq-y3-g8U"/>
                             <constraint firstItem="RHw-x5-6Ze" firstAttribute="leading" secondItem="YmQ-tU-hHS" secondAttribute="leading" constant="20" id="gYA-G5-MT1"/>
-                            <constraint firstItem="V1K-cW-ahb" firstAttribute="width" secondItem="OOb-oW-y3h" secondAttribute="width" id="su6-sg-Ft2"/>
-                            <constraint firstItem="RHw-x5-6Ze" firstAttribute="top" secondItem="V1K-cW-ahb" secondAttribute="bottom" id="t5f-L9-49l"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YmQ-tU-hHS"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Help" image="helpicon" id="Kbc-33-nZG"/>
+                    <navigationItem key="navigationItem" id="ZCP-Ih-oMi"/>
                     <connections>
                         <outlet property="Infobox" destination="gta-Qg-4ZU" id="DLe-2V-znQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HSW-kA-weK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="736.23188405797111" y="1046.7391304347827"/>
+            <point key="canvasLocation" x="1643.4782608695652" y="1046.7391304347827"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -648,9 +632,9 @@
                     </tabBar>
                     <connections>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
-                        <segue destination="0Em-i4-UWG" kind="relationship" relationship="viewControllers" id="KfB-bw-BMG"/>
+                        <segue destination="bsy-Ae-qNR" kind="relationship" relationship="viewControllers" id="KfB-bw-BMG"/>
                         <segue destination="Ilr-lq-Eng" kind="relationship" relationship="viewControllers" id="dMg-TC-zi5"/>
-                        <segue destination="Rz9-Yg-AjD" kind="relationship" relationship="viewControllers" id="efV-lN-eYq"/>
+                        <segue destination="ybO-1o-Z36" kind="relationship" relationship="viewControllers" id="efV-lN-eYq"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -675,6 +659,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rPi-D6-XNB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1508.6956521739132" y="357.88043478260875"/>
+        </scene>
+        <!--Help-->
+        <scene sceneID="PIe-r8-j2C">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ybO-1o-Z36" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Help" image="helpicon" id="Kbc-33-nZG"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="DKC-g3-pqb">
+                        <rect key="frame" x="0.0" y="20" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Rz9-Yg-AjD" kind="relationship" relationship="rootViewController" id="tFX-yo-hKq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I7I-Rf-t8b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="736.23188405797111" y="1046.7391304347827"/>
+        </scene>
+        <!--Graph-->
+        <scene sceneID="VmU-qI-xXJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bsy-Ae-qNR" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Graph" image="graphicon" id="apn-xx-ioh"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="zDj-Zs-ww9">
+                        <rect key="frame" x="0.0" y="20" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0Em-i4-UWG" kind="relationship" relationship="rootViewController" id="cPj-HB-IXP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RQp-p7-3w9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1492.753623188406" y="-318.75"/>
         </scene>
     </scenes>
     <resources>

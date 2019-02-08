@@ -20,7 +20,8 @@ class ThirdViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-
+        navigationController?.navigationBar.topItem?.title="Graph page"
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     override func viewWillAppear(_ animated: Bool) {
 
