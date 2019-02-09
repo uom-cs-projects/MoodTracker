@@ -15,8 +15,13 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
     var daily = false
     override func viewWillAppear(_ animated: Bool) {
         daily = calculatedaily()
+        print("daily:")
+        print(daily)
         setisready()
         setcircle()
+        print(timestring)
+        let titlestring = "Log Mood for " + String(timestring.prefix(1)).capitalized + String(timestring.dropFirst())
+        navigationController?.navigationBar.topItem?.title=titlestring
     }
     
     func calculatedaily()-> Bool{
@@ -38,8 +43,6 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
         // Do any additional setup after loading the view, typically from a nib.
         currentbutton = alertbutton
 
-        
-        
         //db file
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) .appendingPathComponent("MoodDatabase.sqlite")
 
@@ -61,16 +64,14 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
             print("error creating table: \(errmsg)")
         }
         
-        setisready()
-        setcircle()
-        
-        let titlestring = "Log " + String(timestring.prefix(1)).capitalized + String(timestring.dropFirst()) + " Mood"
-        navigationController?.navigationBar.topItem?.title=titlestring
+        //setisready()
+        //setcircle()
+
     }
 
     func setisready(){
         if daily {
-            timestring = "Overall"
+            timestring = "Today"
             readValues()
             if moodList.count==0{
                 isready = true
@@ -108,20 +109,24 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     func settimestring(){
-        let date = Date()
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: date)
-        switch hour {
-        case 5..<11:
-            timestring = "Morning"
-        case 11..<15:
-            timestring = "Lunch"
-        case 15..<18:
-            timestring = "Afternoon"
-        case 18..<19:
-            timestring = "Evening"
-        default:
-            timestring = "Bedtime"
+        if daily {
+            timestring = "Today"
+        }else{
+            let date = Date()
+            let calendar = Calendar.current
+            let hour = calendar.component(.hour, from: date)
+            switch hour {
+            case 5..<11:
+                timestring = "Morning"
+            case 11..<15:
+                timestring = "Lunch"
+            case 15..<18:
+                timestring = "Afternoon"
+            case 18..<22:
+                timestring = "Evening"
+            default:
+                timestring = "Bedtime"
+            }
         }
     }
     func setcircle(){
@@ -204,7 +209,7 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         
         //set up not submitted yet
-        let alertmessage = "Submitting \"" + currentemotion.lowercased() + "\" as your emotion at " + (timestring.lowercased())
+        let alertmessage = "Submitting \"" + currentemotion.lowercased() + "\" as your emotion for " + (timestring.lowercased())
         let alert = UIAlertController(title: "Please Confirm your Data", message: alertmessage, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Default action"), style: .cancel, handler: { _ in
         })

@@ -29,7 +29,7 @@ private struct Constants {
     override func draw(_ rect: CGRect) {
         
         if graphPoints == []{
-                   graphPoints = getgraphvalues.returnnumbers(myvalue: 5, selectedsegment: 0)
+                   graphPoints = getgraphvalues.returnnumbers(myvalue: 5, selectedsegment: 0, mystate: 0)
         }
         
         
@@ -183,7 +183,7 @@ class getgraphvalues{
     static var iteration = 4
     var myvalue = 4
     
-    class func returnnumbers(myvalue: Int, selectedsegment: Int) -> [Int] {
+    class func returnnumbers(myvalue: Int, selectedsegment: Int, mystate: Int) -> [Int] {
         var activation = [0,0,0,0,0,0,0]
         var pleasedness = [0,0,0,0,0,0,0]
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) .appendingPathComponent("MoodDatabase.sqlite")
@@ -192,11 +192,10 @@ class getgraphvalues{
         if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
             print("error opening database")
         }
-        readValues(myvalue: myvalue)
+        readValues(myvalue: myvalue, mystate: mystate)
         
         var position = 0
         for currentmood in moodList {
-            
             switch currentmood.emotion{
             case "alert":
                 activation[position] = 10+1
@@ -210,7 +209,7 @@ class getgraphvalues{
             case "angry":
                 activation[position] = 8+1
                 pleasedness[position] = 3+1
-            case "suprised":
+            case "suprise":
                 activation[position] = 8+1
                 pleasedness[position] = 7+1
             case "stressed":
@@ -271,26 +270,56 @@ class getgraphvalues{
         else{return pleasedness}
     }
     
-    class func readValues(myvalue: Int){
+    class func readValues(myvalue: Int, mystate: Int){
         
         moodList.removeAll()
-        
+        print("state", mystate, "value", myvalue)
         var queryString = "SELECT * FROM Mood"
-        
-        switch myvalue {
-        case 1:
-            queryString = "SELECT * FROM Mood where thetime is \"morning\""
-        case 2:
-            queryString = "SELECT * FROM Mood where thetime is \"lunch\""
-        case 3:
-            queryString = "SELECT * FROM Mood where thetime is \"afternoon\""
-        case 4:
-            queryString = "SELECT * FROM Mood where thetime is \"evening\""
-        case 5:
-            queryString = "SELECT * FROM Mood where thetime is \"bedtime\""
-        default:
-            queryString = "SELECT * FROM Mood where thetime is \"overall\""
+        //if daily ie only "today" should be shown
+        if mystate==0 {
+            queryString = "SELECT * FROM Mood where thetime is \"today\""
+        }else if mystate==1{
+            //if we are measuring throughout day, and we want the day overview ie morning through evening
+            switch myvalue {
+            case 1:
+                queryString = "SELECT * FROM Mood where thedate is \"2018-12-19\""
+            case 2:
+                queryString = "SELECT * FROM Mood where thedate is \"2018-12-20\""
+            case 3:
+                queryString = "SELECT * FROM Mood where thedate is \"2018-12-21\""
+            case 4:
+                queryString = "SELECT * FROM Mood where thedate is \"2019-01-25\""
+            case 5:
+                queryString = "SELECT * FROM Mood where thedate is \"2019-01-29\""
+            case 6:
+                queryString = "SELECT * FROM Mood where thedate is \"2019-02-04\""
+            default:
+                queryString = "SELECT * FROM Mood where thedate is \"2019-02-09\""
+            }
+        }else{
+           //if we are measuring throughout day and we want moods for mornings through the week
+            switch myvalue {
+            case 1:
+                queryString = "SELECT * FROM Mood where thetime is \"morning\""
+            case 2:
+                queryString = "SELECT * FROM Mood where thetime is \"lunch\""
+            case 3:
+                queryString = "SELECT * FROM Mood where thetime is \"afternoon\""
+            case 4:
+                queryString = "SELECT * FROM Mood where thetime is \"evening\""
+            case 5:
+                queryString = "SELECT * FROM Mood where thetime is \"bedtime\""
+            default:
+                queryString = "SELECT * FROM Mood where thetime is \"overall\""
+            }
+
+            
         }
+                    print("state", queryString)
+        
+        
+        
+
         
         
         var stmt:OpaquePointer?
@@ -312,6 +341,7 @@ class getgraphvalues{
             //adding values to list
             moodList.append(Moods(id: Int(id), date: String(describing: date), time: String(describing: time), emotion: String(describing: emotion)))
         }
+        print("state: numebr found:", moodList.count)
         count = 0
     }
     

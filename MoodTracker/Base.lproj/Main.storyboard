@@ -86,36 +86,57 @@
                                 <rect key="frame" x="7" y="592" width="55" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Monday"/>
+                                <connections>
+                                    <action selector="monday:" destination="0Em-i4-UWG" eventType="touchUpInside" id="5Im-jf-gbv"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTN-By-S77">
                                 <rect key="frame" x="74" y="591" width="58" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Tuesday"/>
+                                <connections>
+                                    <action selector="tuesday:" destination="0Em-i4-UWG" eventType="touchUpInside" id="Zgq-a7-aUH"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6r-iT-jPe">
                                 <rect key="frame" x="140" y="590" width="80" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Wednesday"/>
+                                <connections>
+                                    <action selector="wednesday:" destination="0Em-i4-UWG" eventType="touchUpInside" id="xrT-Su-U3U"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLY-ZW-Uqk">
                                 <rect key="frame" x="232" y="589" width="65" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Thursday"/>
+                                <connections>
+                                    <action selector="thursday:" destination="0Em-i4-UWG" eventType="touchUpInside" id="Bwk-jS-ydw"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uqY-GP-Fwg">
                                 <rect key="frame" x="305" y="588" width="42" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Friday"/>
+                                <connections>
+                                    <action selector="friday:" destination="0Em-i4-UWG" eventType="touchUpInside" id="7Rb-Lv-vm8"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z30-y5-8F8">
                                 <rect key="frame" x="123" y="626" width="62" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Saturday"/>
+                                <connections>
+                                    <action selector="saturday:" destination="0Em-i4-UWG" eventType="touchUpInside" id="nGt-oH-dIy"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ROn-4Z-a4a">
                                 <rect key="frame" x="221" y="627" width="52" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Sunday"/>
+                                <connections>
+                                    <action selector="sunday:" destination="0Em-i4-UWG" eventType="touchUpInside" id="47j-Nn-nl2"/>
+                                </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="oK0-BZ-KnD">
                                 <rect key="frame" x="128.66666666666666" y="428" width="156.99999999999997" height="29"/>
@@ -125,6 +146,17 @@
                                 </segments>
                                 <connections>
                                     <action selector="happiness:" destination="0Em-i4-UWG" eventType="valueChanged" id="snX-wX-DBi"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dcq-1w-RbF" userLabel="DayTime">
+                                <rect key="frame" x="108" y="473" width="209" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Day Overview"/>
+                                    <segment title="Time Overview"/>
+                                </segments>
+                                <connections>
+                                    <action selector="DayTime:" destination="0Em-i4-UWG" eventType="valueChanged" id="ec7-dq-JVV"/>
                                 </connections>
                             </segmentedControl>
                         </subviews>
@@ -139,6 +171,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="kuO-R1-cNf"/>
                     <connections>
+                        <outlet property="DayTime" destination="dcq-1w-RbF" id="rc0-tm-YrE"/>
                         <outlet property="GraphView" destination="VQX-XH-mVY" id="aaC-Z8-vCs"/>
                         <outlet property="happytoggle" destination="oK0-BZ-KnD" id="xpe-Zd-PE9"/>
                         <outletCollection property="timebuttons" destination="Bhs-Oe-28X" collectionClass="NSMutableArray" id="EDC-dD-Gzk"/>
@@ -147,6 +180,13 @@
                         <outletCollection property="timebuttons" destination="Ypp-40-9sS" collectionClass="NSMutableArray" id="4Hv-IW-64r"/>
                         <outletCollection property="timebuttons" destination="2MB-CH-Yx8" collectionClass="NSMutableArray" id="FG6-8P-RpG"/>
                         <outletCollection property="timebuttons" destination="zw8-lx-Azb" collectionClass="NSMutableArray" id="Ym9-G5-43U"/>
+                        <outletCollection property="datebuttons" destination="UjH-r5-XS4" collectionClass="NSMutableArray" id="fh6-9c-3uj"/>
+                        <outletCollection property="datebuttons" destination="gTN-By-S77" collectionClass="NSMutableArray" id="lAH-fR-XGe"/>
+                        <outletCollection property="datebuttons" destination="V6r-iT-jPe" collectionClass="NSMutableArray" id="azq-Gy-jBC"/>
+                        <outletCollection property="datebuttons" destination="zLY-ZW-Uqk" collectionClass="NSMutableArray" id="FN3-m4-LB4"/>
+                        <outletCollection property="datebuttons" destination="z30-y5-8F8" collectionClass="NSMutableArray" id="wnd-dB-DC8"/>
+                        <outletCollection property="datebuttons" destination="ROn-4Z-a4a" collectionClass="NSMutableArray" id="JLH-A9-pqh"/>
+                        <outletCollection property="datebuttons" destination="uqY-GP-Fwg" collectionClass="NSMutableArray" id="r9c-rG-pmY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sEG-Py-V1a" userLabel="First Responder" sceneMemberID="firstResponder"/>
