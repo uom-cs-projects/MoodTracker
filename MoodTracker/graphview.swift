@@ -264,7 +264,7 @@ class getgraphvalues{
             }
             position = position + 1
         }
-        if selectedsegment == 0 {
+        if selectedsegment == 1 {
             return activation
         }
         else{return pleasedness}

@@ -39,7 +39,8 @@ class ThirdViewController: UIViewController {
         for curbutton in datebuttons{
             curbutton.isHidden = false
         }
-
+        whichday.isHidden = false
+        whichtime.isHidden = true
         GraphView.graphPoints = getgraphvalues.returnnumbers(myvalue: currenttimevalue, selectedsegment: currenttogglevalue, mystate: currentstate)
         GraphView.setNeedsDisplay()
         print("toggle", currenttogglevalue, "time", currenttimevalue, "state", currentstate)
@@ -161,6 +162,8 @@ class ThirdViewController: UIViewController {
             for curbutton in datebuttons{
                 curbutton.isHidden = false
             }
+            whichday.isHidden = false
+            whichtime.isHidden = true
         }else{
             for curbutton in timebuttons{
                 curbutton.isHidden = false
@@ -168,11 +171,29 @@ class ThirdViewController: UIViewController {
             for curbutton in datebuttons{
                 curbutton.isHidden = true
             }
+            whichday.isHidden = true
+            whichtime.isHidden = false
         }
     }
+    
+    
+    @IBAction func changetime(_ sender: Any) {
+        currenttimevalue = whichtime.selectedSegmentIndex + 1
+        refreshgraph()
+    }
+    
+    
+    @IBAction func changeday(_ sender: Any) {
+        currenttimevalue = whichday.selectedSegmentIndex + 1
+        refreshgraph()
+    }
+    
+    
     @IBOutlet var happytoggle: UISegmentedControl!
     @IBOutlet var DayTime: UISegmentedControl!
     
+    @IBOutlet var whichtime: UISegmentedControl!
+    @IBOutlet var whichday: UISegmentedControl!
     /*
     // MARK: - Navigation
 
