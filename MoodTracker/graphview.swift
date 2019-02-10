@@ -282,19 +282,19 @@ class getgraphvalues{
             //if we are measuring throughout day, and we want the day overview ie morning through evening
             switch myvalue {
             case 1:
-                queryString = "SELECT * FROM Mood where thedate is \"2019-02-11\" limit 7"
+                queryString = "SELECT * FROM Mood where thedate is \"2019-02-18\" limit 7"
             case 2:
-                queryString = "SELECT * FROM Mood where thedate is \"2019-02-12\" limit 7"
+                queryString = "SELECT * FROM Mood where thedate is \"2019-02-19\" limit 7"
             case 3:
-                queryString = "SELECT * FROM Mood where thedate is \"2019-02-13\" limit 7"
+                queryString = "SELECT * FROM Mood where thedate is \"2019-02-20\" limit 7"
             case 4:
-                queryString = "SELECT * FROM Mood where thedate is \"2019-02-14\" limit 7"
+                queryString = "SELECT * FROM Mood where thedate is \"2019-02-21\" limit 7"
             case 5:
-                queryString = "SELECT * FROM Mood where thedate is \"2019-02-15\" limit 7"
+                queryString = "SELECT * FROM Mood where thedate is \"2019-02-22\" limit 7"
             case 6:
-                queryString = "SELECT * FROM Mood where thedate is \"2019-02-16\" limit 7"
+                queryString = "SELECT * FROM Mood where thedate is \"2019-02-23\" limit 7"
             default:
-                queryString = "SELECT * FROM Mood where thedate is \"2019-02-17\" limit 7"
+                queryString = "SELECT * FROM Mood where thedate is \"2019-02-24\" limit 7"
             }
         }else{
            //if we are measuring throughout day and we want moods for mornings through the week

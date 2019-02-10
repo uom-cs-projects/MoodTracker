@@ -31,20 +31,20 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
         dateFormatter.dateFormat = "yyyy/MM/dd"
         let secondmonday = dateFormatter.date(from: "2019/02/18") ?? Date() //start of second week
 
-        /*
+        
          if today < secondmonday{//if we are still in first week, group 1
          return true
          }else{
          return false
          }
-         */
+         /*
         
         //group 2
         if today >= secondmonday{//if we are in second week, group 2
             return true
         }else{
             return false
-        }
+        }*/
     }
     
     override func viewDidLoad() {
@@ -223,6 +223,7 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Default action"), style: .cancel, handler: { _ in
         })
         let OKAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in
+            self.addtodb();
             self.resetpage();
         })
         alert.addAction(cancelAction)
@@ -243,59 +244,67 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
             self.present(already, animated: true, completion: nil)
         }else{
             self.present(alert, animated: true, completion: nil)
-        
-    
-            let emotion = currentemotion.lowercased() as NSString
-            let thetime = (timestring.lowercased()) as NSString
-            
-            
-            let theFormatter = DateFormatter()
-            theFormatter.dateFormat = "yyyy-MM-dd";
-            let datestring = theFormatter.string(from: Date()) as NSString
-            //print(datestring)
-            
-            //creating a statement
-            var stmt: OpaquePointer?
-            
-            //the insert query
-            let queryString = "INSERT INTO Mood (thedate, thetime, emotion) VALUES (?,?,?)"
-            
-            //preparing the query
-            if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
-                let errmsg = String(cString: sqlite3_errmsg(db)!)
-                print("error preparing insert: \(errmsg)")
-                return
-            }
-            
-            //binding the parameters
-            if sqlite3_bind_text(stmt, 1, datestring.utf8String, -1, nil) != SQLITE_OK{
-                let errmsg = String(cString: sqlite3_errmsg(db)!)
-                print("failure binding name: \(errmsg)")
-                return
-            }
-            if sqlite3_bind_text(stmt, 2, thetime.utf8String, -1, nil) != SQLITE_OK{
-                let errmsg = String(cString: sqlite3_errmsg(db)!)
-                print("failure binding name: \(errmsg)")
-                return
-            }
-            if sqlite3_bind_text(stmt, 3, emotion.utf8String, -1, nil) != SQLITE_OK{
-                let errmsg = String(cString: sqlite3_errmsg(db)!)
-                print("failure binding name: \(errmsg)")
-                return
-            }
-            
-            //executing the query to insert values
-            if sqlite3_step(stmt) != SQLITE_DONE {
-                let errmsg = String(cString: sqlite3_errmsg(db)!)
-                print("failure inserting emotion: \(errmsg)")
-                return
-            }
-            readValues()
-            
-            //displaying a success message
-            //print("Mood saved successfully")
+
         }
     }
+    
+    func addtodb(){
+        
+        
+        let emotion = currentemotion.lowercased() as NSString
+        let thetime = (timestring.lowercased()) as NSString
+        
+        
+        let theFormatter = DateFormatter()
+        theFormatter.dateFormat = "yyyy-MM-dd";
+        let datestring = theFormatter.string(from: Date()) as NSString
+        //print(datestring)
+        
+        //creating a statement
+        var stmt: OpaquePointer?
+        
+        //the insert query
+        let queryString = "INSERT INTO Mood (thedate, thetime, emotion) VALUES (?,?,?)"
+        
+        //preparing the query
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing insert: \(errmsg)")
+            return
+        }
+        
+        //binding the parameters
+        if sqlite3_bind_text(stmt, 1, datestring.utf8String, -1, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure binding name: \(errmsg)")
+            return
+        }
+        if sqlite3_bind_text(stmt, 2, thetime.utf8String, -1, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure binding name: \(errmsg)")
+            return
+        }
+        if sqlite3_bind_text(stmt, 3, emotion.utf8String, -1, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure binding name: \(errmsg)")
+            return
+        }
+        
+        //executing the query to insert values
+        if sqlite3_step(stmt) != SQLITE_DONE {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure inserting emotion: \(errmsg)")
+            return
+        }
+        readValues()
+        
+        //displaying a success message
+        //print("Mood saved successfully")
+        
+        
+        
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
