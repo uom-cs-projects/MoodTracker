@@ -10,11 +10,6 @@ import UIKit
 
 class ThirdViewController: UIViewController {
 
-    
-    
-    struct numberss {
-        var numbers = [1,2,3,4,5,6,7]
-    }
     @IBOutlet weak var GraphView: GraphView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,22 +18,16 @@ class ThirdViewController: UIViewController {
         navigationController?.navigationBar.topItem?.title="Stats"
         navigationController?.navigationBar.prefersLargeTitles = true
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         
-
         if calculatedaily() { //if only once per day
             currentstate = 0
         }else{
             currenttimevalue = 6
             currentstate = 1
         }
-        
-        for curbutton in timebuttons{
-            curbutton.isHidden = true
-        }
-        for curbutton in datebuttons{
-            curbutton.isHidden = false
-        }
+
         whichday.isHidden = false
         whichtime.isHidden = true
         GraphView.graphPoints = getgraphvalues.returnnumbers(myvalue: currenttimevalue, selectedsegment: currenttogglevalue, mystate: currentstate)
@@ -74,79 +63,6 @@ class ThirdViewController: UIViewController {
     }
     
     
-    @IBOutlet var datebuttons: [UIButton]!
-    @IBOutlet var timebuttons: [UIButton]!
-    @IBAction func morning(_ sender: UIButton) {
-        
-        currenttimevalue = 1
-        refreshgraph()
-    }
-    
-    @IBAction func afternoon(_ sender: UIButton) {
-        
-        currenttimevalue = 3
-        refreshgraph()
-    }
-    
-    @IBAction func lunchtime(_ sender: UIButton) {
-        
-        currenttimevalue = 2
-        refreshgraph()
-    }
-    
-    @IBAction func evening(_ sender: UIButton) {
-        
-        currenttimevalue = 4
-        refreshgraph()
-    }
-    
-
-    @IBAction func bedtime(_ sender: UIButton) {
-        currenttimevalue = 5
-        refreshgraph()
-    }
-    @IBAction func overall(_ sender: UIButton) {
-        
-        currenttimevalue = 6
-        refreshgraph()
-    }
-    
-    @IBAction func monday(_ sender: Any) {
-        currenttimevalue = 1
-        refreshgraph()
-    }
-    
-    @IBAction func tuesday(_ sender: Any) {
-        currenttimevalue = 2
-        refreshgraph()
-    }
-    
-    @IBAction func wednesday(_ sender: Any) {
-        currenttimevalue = 3
-        refreshgraph()
-    }
-    
-    @IBAction func thursday(_ sender: Any) {
-        currenttimevalue = 4
-        refreshgraph()
-    }
-    
-    @IBAction func friday(_ sender: Any) {
-        currenttimevalue = 5
-        refreshgraph()
-    }
-    
-    @IBAction func saturday(_ sender: Any) {
-        currenttimevalue = 6
-        refreshgraph()
-    }
-    
-    @IBAction func sunday(_ sender: Any) {
-        currenttimevalue = 7
-        refreshgraph()
-    }
-    
-    
     @IBAction func happiness(_ sender: UISegmentedControl) {
         currenttogglevalue = happytoggle.selectedSegmentIndex
         refreshgraph()
@@ -156,21 +72,9 @@ class ThirdViewController: UIViewController {
         currentstate = DayTime.selectedSegmentIndex + 1
         refreshgraph()
         if DayTime.selectedSegmentIndex == 0 {
-            for curbutton in timebuttons{
-                curbutton.isHidden = true
-            }
-            for curbutton in datebuttons{
-                curbutton.isHidden = false
-            }
             whichday.isHidden = false
             whichtime.isHidden = true
         }else{
-            for curbutton in timebuttons{
-                curbutton.isHidden = false
-            }
-            for curbutton in datebuttons{
-                curbutton.isHidden = true
-            }
             whichday.isHidden = true
             whichtime.isHidden = false
         }
