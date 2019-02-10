@@ -29,7 +29,7 @@ private struct Constants {
     override func draw(_ rect: CGRect) {
         
         if graphPoints == []{
-                   graphPoints = getgraphvalues.returnnumbers(myvalue: 5, selectedsegment: 0, mystate: 0)
+                   graphPoints = getgraphvalues.returnnumbers(myvalue: 0, selectedsegment: 0, mystate: 0)
         }
         
         
@@ -277,40 +277,40 @@ class getgraphvalues{
         var queryString = "SELECT * FROM Mood"
         //if daily ie only "today" should be shown
         if mystate==0 {
-            queryString = "SELECT * FROM Mood where thetime is \"today\""
+            queryString = "SELECT * FROM Mood where thetime is \"today\" limit 7"
         }else if mystate==1{
             //if we are measuring throughout day, and we want the day overview ie morning through evening
             switch myvalue {
             case 1:
-                queryString = "SELECT * FROM Mood where thedate is \"2018-12-19\""
+                queryString = "SELECT * FROM Mood where thedate is \"2018-12-19\" limit 7"
             case 2:
-                queryString = "SELECT * FROM Mood where thedate is \"2018-12-20\""
+                queryString = "SELECT * FROM Mood where thedate is \"2018-12-20\" limit 7"
             case 3:
-                queryString = "SELECT * FROM Mood where thedate is \"2018-12-21\""
+                queryString = "SELECT * FROM Mood where thedate is \"2018-12-21\" limit 7"
             case 4:
-                queryString = "SELECT * FROM Mood where thedate is \"2019-01-25\""
+                queryString = "SELECT * FROM Mood where thedate is \"2019-01-25\" limit 7"
             case 5:
-                queryString = "SELECT * FROM Mood where thedate is \"2019-01-29\""
+                queryString = "SELECT * FROM Mood where thedate is \"2019-01-29\" limit 7"
             case 6:
-                queryString = "SELECT * FROM Mood where thedate is \"2019-02-04\""
+                queryString = "SELECT * FROM Mood where thedate is \"2019-02-04\" limit 7"
             default:
-                queryString = "SELECT * FROM Mood where thedate is \"2019-02-09\""
+                queryString = "SELECT * FROM Mood where thedate is \"2019-02-09\" limit 7"
             }
         }else{
            //if we are measuring throughout day and we want moods for mornings through the week
             switch myvalue {
             case 1:
-                queryString = "SELECT * FROM Mood where thetime is \"morning\""
+                queryString = "SELECT * FROM Mood where thetime is \"morning\" limit 7"
             case 2:
-                queryString = "SELECT * FROM Mood where thetime is \"lunch\""
+                queryString = "SELECT * FROM Mood where thetime is \"lunch\" limit 7"
             case 3:
-                queryString = "SELECT * FROM Mood where thetime is \"afternoon\""
+                queryString = "SELECT * FROM Mood where thetime is \"afternoon\" limit 7"
             case 4:
-                queryString = "SELECT * FROM Mood where thetime is \"evening\""
+                queryString = "SELECT * FROM Mood where thetime is \"evening\" limit 7"
             case 5:
-                queryString = "SELECT * FROM Mood where thetime is \"bedtime\""
+                queryString = "SELECT * FROM Mood where thetime is \"bedtime\" limit 7"
             default:
-                queryString = "SELECT * FROM Mood where thetime is \"overall\""
+                queryString = "SELECT * FROM Mood where thetime is \"overall\" limit 7"
             }
 
             

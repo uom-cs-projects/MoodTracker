@@ -23,16 +23,31 @@ class ThirdViewController: UIViewController {
         
         if calculatedaily() { //if only once per day
             currentstate = 0
+            DayTime.isHidden = true
+            whichday.isHidden = true
+            whichtime.isHidden = true
+            timelabels.isHidden = true
         }else{
             currenttimevalue = 6
             currentstate = 1
+            
+            whichday.isHidden = false
+            whichtime.isHidden = true
+            daylabels.isHidden = true
+            timelabels.isHidden = false
+            DayTime.selectedSegmentIndex = currentstate
+            whichday.selectedSegmentIndex = currenttimevalue-1
+            whichtime.selectedSegmentIndex = currenttimevalue-1
         }
 
-        whichday.isHidden = false
-        whichtime.isHidden = true
+
         GraphView.graphPoints = getgraphvalues.returnnumbers(myvalue: currenttimevalue, selectedsegment: currenttogglevalue, mystate: currentstate)
+        //GraphView.graphPoints = getgraphvalues.returnnumbers(myvalue: 0, selectedsegment: 0, mystate: 0)
         GraphView.setNeedsDisplay()
         print("toggle", currenttogglevalue, "time", currenttimevalue, "state", currentstate)
+        happytoggle.selectedSegmentIndex = currenttogglevalue
+        
+        
     }
     
     var currenttogglevalue = 0
@@ -47,7 +62,7 @@ class ThirdViewController: UIViewController {
         dateFormatter.dateFormat = "yyyy/MM/dd"
         let secondmonday = dateFormatter.date(from: "2019/02/18") ?? Date() //start of second week
         
-        if today > secondmonday{//if we are still in first week
+        if today < secondmonday{//if we are still in first week
             return true
         }else{
             return false
@@ -74,9 +89,13 @@ class ThirdViewController: UIViewController {
         if DayTime.selectedSegmentIndex == 0 {
             whichday.isHidden = false
             whichtime.isHidden = true
+            daylabels.isHidden = true
+            timelabels.isHidden = false
         }else{
             whichday.isHidden = true
             whichtime.isHidden = false
+            daylabels.isHidden = false
+            timelabels.isHidden = true
         }
     }
     
@@ -93,6 +112,8 @@ class ThirdViewController: UIViewController {
     }
     
     
+    @IBOutlet var timelabels: UILabel!
+    @IBOutlet var daylabels: UILabel!
     @IBOutlet var happytoggle: UISegmentedControl!
     @IBOutlet var DayTime: UISegmentedControl!
     

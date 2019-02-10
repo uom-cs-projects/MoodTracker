@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VQX-XH-mVY" userLabel="Graphview" customClass="GraphView" customModule="MoodTracker" customModuleProvider="target">
-                                <rect key="frame" x="55" y="260" width="304" height="250"/>
+                                <rect key="frame" x="55" y="265" width="304" height="250"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="V2P-35-RzV"/>
@@ -45,7 +45,7 @@
                                 </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vlm-EG-bcf">
-                                <rect key="frame" x="10" y="174" width="394" height="29"/>
+                                <rect key="frame" x="10" y="169" width="394" height="29"/>
                                 <segments>
                                     <segment title="AM"/>
                                     <segment title="Lunch"/>
@@ -59,7 +59,7 @@
                                 </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="KaU-6x-IFN">
-                                <rect key="frame" x="10" y="174" width="394" height="29"/>
+                                <rect key="frame" x="10" y="169" width="394" height="29"/>
                                 <segments>
                                     <segment title="Mon"/>
                                     <segment title="Tue"/>
@@ -74,7 +74,7 @@
                                 </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="oK0-BZ-KnD">
-                                <rect key="frame" x="128.66666666666666" y="212" width="156.99999999999997" height="29"/>
+                                <rect key="frame" x="128.66666666666666" y="217" width="156.99999999999997" height="29"/>
                                 <segments>
                                     <segment title="Happiness"/>
                                     <segment title="Activation"/>
@@ -83,17 +83,33 @@
                                     <action selector="happiness:" destination="0Em-i4-UWG" eventType="valueChanged" id="snX-wX-DBi"/>
                                 </connections>
                             </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="M       T       W       T       F       S       S" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DPs-1U-lT1">
+                                <rect key="frame" x="73.666666666666686" y="525" width="267" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AM Lunch PM Evening Bedtime Overall" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZr-OJ-rVW">
+                                <rect key="frame" x="58.666666666666657" y="525" width="297" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="oK0-BZ-KnD" firstAttribute="top" secondItem="KaU-6x-IFN" secondAttribute="bottom" constant="10" id="1FB-2q-COd"/>
+                            <constraint firstItem="CZr-OJ-rVW" firstAttribute="centerX" secondItem="DmK-uV-hde" secondAttribute="centerX" id="01d-c9-eDi"/>
+                            <constraint firstItem="oK0-BZ-KnD" firstAttribute="top" secondItem="KaU-6x-IFN" secondAttribute="bottom" constant="20" id="1FB-2q-COd"/>
                             <constraint firstItem="VQX-XH-mVY" firstAttribute="top" secondItem="oK0-BZ-KnD" secondAttribute="bottom" constant="20" id="4c9-2s-o3h"/>
+                            <constraint firstItem="CZr-OJ-rVW" firstAttribute="top" secondItem="VQX-XH-mVY" secondAttribute="bottom" constant="10" id="BN1-9y-P3B"/>
+                            <constraint firstItem="DPs-1U-lT1" firstAttribute="centerX" secondItem="VQX-XH-mVY" secondAttribute="centerX" id="LOm-iU-1gs"/>
                             <constraint firstItem="vlm-EG-bcf" firstAttribute="leading" secondItem="DmK-uV-hde" secondAttribute="leading" constant="10" id="Lni-KM-aLv"/>
-                            <constraint firstItem="KaU-6x-IFN" firstAttribute="top" secondItem="dcq-1w-RbF" secondAttribute="bottom" constant="10" id="RU2-9W-jtO"/>
+                            <constraint firstItem="DPs-1U-lT1" firstAttribute="top" secondItem="VQX-XH-mVY" secondAttribute="bottom" constant="10" id="P03-34-BHW"/>
+                            <constraint firstItem="KaU-6x-IFN" firstAttribute="top" secondItem="dcq-1w-RbF" secondAttribute="bottom" constant="5" id="RU2-9W-jtO"/>
                             <constraint firstItem="oK0-BZ-KnD" firstAttribute="centerX" secondItem="DmK-uV-hde" secondAttribute="centerX" id="U31-WY-wDQ"/>
                             <constraint firstItem="dcq-1w-RbF" firstAttribute="centerX" secondItem="DmK-uV-hde" secondAttribute="centerX" id="UXn-iY-Spi"/>
                             <constraint firstItem="KaU-6x-IFN" firstAttribute="leading" secondItem="DmK-uV-hde" secondAttribute="leading" constant="10" id="cGA-rw-PPw"/>
-                            <constraint firstItem="vlm-EG-bcf" firstAttribute="top" secondItem="dcq-1w-RbF" secondAttribute="bottom" constant="10" id="dth-C8-OyI"/>
+                            <constraint firstItem="vlm-EG-bcf" firstAttribute="top" secondItem="dcq-1w-RbF" secondAttribute="bottom" constant="5" id="dth-C8-OyI"/>
                             <constraint firstItem="VQX-XH-mVY" firstAttribute="centerX" secondItem="DmK-uV-hde" secondAttribute="centerX" id="gZK-oj-4zl"/>
                             <constraint firstItem="DmK-uV-hde" firstAttribute="trailing" secondItem="KaU-6x-IFN" secondAttribute="trailing" constant="10" id="gtp-dR-TZ2"/>
                             <constraint firstItem="dcq-1w-RbF" firstAttribute="top" secondItem="DmK-uV-hde" secondAttribute="top" constant="20" id="jmg-M1-PHJ"/>
@@ -105,7 +121,9 @@
                     <connections>
                         <outlet property="DayTime" destination="dcq-1w-RbF" id="rc0-tm-YrE"/>
                         <outlet property="GraphView" destination="VQX-XH-mVY" id="aaC-Z8-vCs"/>
+                        <outlet property="daylabels" destination="DPs-1U-lT1" id="4dY-FY-DFX"/>
                         <outlet property="happytoggle" destination="oK0-BZ-KnD" id="xpe-Zd-PE9"/>
+                        <outlet property="timelabels" destination="CZr-OJ-rVW" id="yVW-1z-ifl"/>
                         <outlet property="whichday" destination="KaU-6x-IFN" id="zYy-QP-NnS"/>
                         <outlet property="whichtime" destination="vlm-EG-bcf" id="Ym2-Kd-THe"/>
                     </connections>
