@@ -15,11 +15,11 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
     var daily = false
     override func viewWillAppear(_ animated: Bool) {
         daily = calculatedaily()
-        print("daily:")
-        print(daily)
+        //print("daily:")
+        //print(daily)
         setisready()
         setcircle()
-        print(timestring)
+        //print(timestring)
         let titlestring = "Log Mood for " + String(timestring.prefix(1)).capitalized + String(timestring.dropFirst())
         navigationController?.navigationBar.topItem?.title=titlestring
     }
@@ -31,7 +31,16 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
         dateFormatter.dateFormat = "yyyy/MM/dd"
         let secondmonday = dateFormatter.date(from: "2019/02/18") ?? Date() //start of second week
 
-        if today < secondmonday{//if we are still in first week
+        /*
+         if today < secondmonday{//if we are still in first week, group 1
+         return true
+         }else{
+         return false
+         }
+         */
+        
+        //group 2
+        if today >= secondmonday{//if we are in second week, group 2
             return true
         }else{
             return false
@@ -80,9 +89,9 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
             }
         }else{
             settimestring()
-            print(timestring)
+            //print(timestring)
             readValues()
-            print(moodList.count)
+            //print(moodList.count)
             if moodList.count == 0{
                 isready = true
             }else if moodList.count == 1 && timestring == "Bedtime"{
@@ -91,8 +100,8 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
             }else{
                 isready = false
             }
-            print("isready")
-            print(isready)
+            //print("isready")
+            //print(isready)
             if timestring == "Overall"{
                 readValues()
                 print(moodList.count)
@@ -104,7 +113,7 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
             }
         }
 
-        print(isready)
+        //print(isready)
         
     }
     
@@ -140,7 +149,7 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
             submit.setTitle(submitstring, for: .normal)
         }else{
             circle.image = #imageLiteral(resourceName: "orange")
-            inputnow.setTitle("Please wait until input time", for: .normal)
+            inputnow.setTitle("You have already logged your mood for now", for: .normal)
             inputnow.isEnabled = false
             submit.isHidden = true
             submit.isEnabled = false
@@ -162,7 +171,7 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     func resetpage(){
         circle.image = #imageLiteral(resourceName: "orange")
-        inputnow.setTitle("Please wait until input time", for: .normal)
+        inputnow.setTitle("You have already logged your mood for now", for: .normal)
         inputnow.isEnabled = false
         submit.isHidden = true
         submit.isEnabled = false
@@ -243,7 +252,7 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
             let theFormatter = DateFormatter()
             theFormatter.dateFormat = "yyyy-MM-dd";
             let datestring = theFormatter.string(from: Date()) as NSString
-            print(datestring)
+            //print(datestring)
             
             //creating a statement
             var stmt: OpaquePointer?
@@ -284,7 +293,7 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
             readValues()
             
             //displaying a success message
-            print("Mood saved successfully")
+            //print("Mood saved successfully")
         }
     }
     

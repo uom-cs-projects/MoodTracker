@@ -524,10 +524,10 @@
             </objects>
             <point key="canvasLocation" x="1656.521739130435" y="359.51086956521743"/>
         </scene>
-        <!--Table-->
+        <!--History-->
         <scene sceneID="V2P-iP-exa">
             <objects>
-                <tableViewController title="Table" id="Tsm-Mq-iJk" customClass="TableViewController" customModule="MoodTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Table" id="Tsm-Mq-iJk" userLabel="History" customClass="TableViewController" customModule="MoodTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ShZ-AN-zod">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -622,11 +622,11 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
-        <!--Table-->
+        <!--History-->
         <scene sceneID="Hnq-Kv-zyk">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ilr-lq-Eng" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Table" image="tableicon" selectedImage="tableicon" id="5xD-Gx-0Ja"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ilr-lq-Eng" userLabel="History" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="History" image="tableicon" selectedImage="tableicon" id="5xD-Gx-0Ja"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SoK-1w-aOr">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>

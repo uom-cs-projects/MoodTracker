@@ -44,7 +44,7 @@ class ThirdViewController: UIViewController {
         GraphView.graphPoints = getgraphvalues.returnnumbers(myvalue: currenttimevalue, selectedsegment: currenttogglevalue, mystate: currentstate)
         //GraphView.graphPoints = getgraphvalues.returnnumbers(myvalue: 0, selectedsegment: 0, mystate: 0)
         GraphView.setNeedsDisplay()
-        print("toggle", currenttogglevalue, "time", currenttimevalue, "state", currentstate)
+        //print("toggle", currenttogglevalue, "time", currenttimevalue, "state", currentstate)
         happytoggle.selectedSegmentIndex = currenttogglevalue
         
         
@@ -60,20 +60,33 @@ class ThirdViewController: UIViewController {
         //var secondmonday = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd"
-        let secondmonday = dateFormatter.date(from: "2019/02/18") ?? Date() //start of second week
         
-        if today < secondmonday{//if we are still in first week
+        //group 1
+        let secondmonday = dateFormatter.date(from: "2019/02/18") ?? Date() //start of second week
+        /*
+        if today < secondmonday{//if we are still in first week, group 1
             return true
         }else{
             return false
         }
+        */
+        
+        //group 2
+        if today >= secondmonday{//if we are in second week, group 2
+            return true
+        }else{
+            return false
+        }
+        
+        
+        
     }
     
     func refreshgraph(){
         
         GraphView.graphPoints = getgraphvalues.returnnumbers(myvalue: currenttimevalue, selectedsegment: currenttogglevalue, mystate: currentstate)
         GraphView.setNeedsDisplay()
-        print("toggle", currenttogglevalue, "time", currenttimevalue, "state", currentstate)
+        //print("toggle", currenttogglevalue, "time", currenttimevalue, "state", currentstate)
         
     }
     

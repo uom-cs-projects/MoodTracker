@@ -273,7 +273,7 @@ class getgraphvalues{
     class func readValues(myvalue: Int, mystate: Int){
         
         moodList.removeAll()
-        print("state", mystate, "value", myvalue)
+        //print("state", mystate, "value", myvalue)
         var queryString = "SELECT * FROM Mood"
         //if daily ie only "today" should be shown
         if mystate==0 {
@@ -282,19 +282,19 @@ class getgraphvalues{
             //if we are measuring throughout day, and we want the day overview ie morning through evening
             switch myvalue {
             case 1:
-                queryString = "SELECT * FROM Mood where thedate is \"2018-12-19\" limit 7"
+                queryString = "SELECT * FROM Mood where thedate is \"2019-02-11\" limit 7"
             case 2:
-                queryString = "SELECT * FROM Mood where thedate is \"2018-12-20\" limit 7"
+                queryString = "SELECT * FROM Mood where thedate is \"2019-02-12\" limit 7"
             case 3:
-                queryString = "SELECT * FROM Mood where thedate is \"2018-12-21\" limit 7"
+                queryString = "SELECT * FROM Mood where thedate is \"2019-02-13\" limit 7"
             case 4:
-                queryString = "SELECT * FROM Mood where thedate is \"2019-01-25\" limit 7"
+                queryString = "SELECT * FROM Mood where thedate is \"2019-02-14\" limit 7"
             case 5:
-                queryString = "SELECT * FROM Mood where thedate is \"2019-01-29\" limit 7"
+                queryString = "SELECT * FROM Mood where thedate is \"2019-02-15\" limit 7"
             case 6:
-                queryString = "SELECT * FROM Mood where thedate is \"2019-02-04\" limit 7"
+                queryString = "SELECT * FROM Mood where thedate is \"2019-02-16\" limit 7"
             default:
-                queryString = "SELECT * FROM Mood where thedate is \"2019-02-09\" limit 7"
+                queryString = "SELECT * FROM Mood where thedate is \"2019-02-17\" limit 7"
             }
         }else{
            //if we are measuring throughout day and we want moods for mornings through the week
@@ -315,7 +315,7 @@ class getgraphvalues{
 
             
         }
-                    print("state", queryString)
+                    //print("state", queryString)
         
         
         
@@ -341,7 +341,7 @@ class getgraphvalues{
             //adding values to list
             moodList.append(Moods(id: Int(id), date: String(describing: date), time: String(describing: time), emotion: String(describing: emotion)))
         }
-        print("state: numebr found:", moodList.count)
+        //print("state: numebr found:", moodList.count)
         count = 0
     }
     
