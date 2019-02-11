@@ -27,7 +27,11 @@ class TableViewController: UITableViewController {
         }
           readValues()
         navigationController?.navigationBar.topItem?.title="History"
-        navigationController?.navigationBar.prefersLargeTitles = true
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+        } else {
+            // Fallback on earlier versions
+        }
         
         
     }

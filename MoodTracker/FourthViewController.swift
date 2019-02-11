@@ -21,7 +21,11 @@ class FourthViewController: UIViewController {
         
         
         navigationController?.navigationBar.topItem?.title="Help"
-        navigationController?.navigationBar.prefersLargeTitles = true
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     

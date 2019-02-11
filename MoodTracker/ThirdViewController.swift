@@ -16,7 +16,11 @@ class ThirdViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         navigationController?.navigationBar.topItem?.title="Stats"
-        navigationController?.navigationBar.prefersLargeTitles = true
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,8 +73,8 @@ class ThirdViewController: UIViewController {
         }else{
             return false
         }
- 
-        /*
+ /*
+        
         //group 2
         if today >= secondmonday{//if we are in second week, group 2
             return true
