@@ -29,7 +29,7 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
         let today = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd"
-        let secondmonday = dateFormatter.date(from: "2019/02/18") ?? Date() //start of second week
+        let secondmonday = dateFormatter.date(from: "2019/02/21") ?? Date() //start of second week
 
         
          if today < secondmonday{//if we are still in first week, group 1
@@ -37,8 +37,8 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
          }else{
          return false
          }
-         /*
-        
+ 
+        /*
         //group 2
         if today >= secondmonday{//if we are in second week, group 2
             return true

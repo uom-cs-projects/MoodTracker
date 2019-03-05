@@ -22,6 +22,7 @@ private struct Constants {
     
     //var graphPoints = getgraphvalues.returnnumbers(myvalue: 4)
     var graphPoints: [Int] = []// = getgraphvalues.returnnumbers(myvalue: 4)
+    var realpoints: [Int] = []
     // 1
     @IBInspectable var startColor: UIColor = .red
     @IBInspectable var endColor: UIColor = .green
@@ -31,8 +32,11 @@ private struct Constants {
         if graphPoints == []{
                    graphPoints = getgraphvalues.returnnumbers(myvalue: 0, selectedsegment: 0, mystate: 0)
         }
-        
-        
+        for point in graphPoints {
+            if(point != 0){
+                realpoints.append(point)
+            }
+        }
         //graphPoints = getgraphvalues.returnnumbers(myvalue: 4)
         let width = rect.width
         let height = rect.height
@@ -103,8 +107,13 @@ private struct Constants {
         // add points for each item in the graphPoints array
         // at the correct (x, y) for the point
         for i in 1..<graphPoints.count {
+            if(graphPoints[i] != 0){
+                
+                
+            
             let nextPoint = CGPoint(x: columnXPoint(i), y: columnYPoint(graphPoints[i]))
             graphPath.addLine(to: nextPoint)
+            }
         }
         
         //graphPath.stroke()
@@ -141,12 +150,17 @@ private struct Constants {
         
         //Draw the circles on top of the graph stroke
         for i in 0..<graphPoints.count {
+            if(graphPoints[i] != 0){
+                
+            
             var point = CGPoint(x: columnXPoint(i), y: columnYPoint(graphPoints[i]))
             point.x -= Constants.circleDiameter / 2
             point.y -= Constants.circleDiameter / 2
             
             let circle = UIBezierPath(ovalIn: CGRect(origin: point, size: CGSize(width: Constants.circleDiameter, height: Constants.circleDiameter)))
             circle.fill()
+                
+            }
         }
         
         //Draw horizontal graph lines on the top of everything
@@ -282,19 +296,19 @@ class getgraphvalues{
             //if we are measuring throughout day, and we want the day overview ie morning through evening
             switch myvalue {
             case 1:
-                queryString = "SELECT * FROM Mood where thedate is \"2019-02-18\" limit 7"
+                queryString = "SELECT * FROM Mood where thedate is \"2019-02-11\" limit 7"
             case 2:
-                queryString = "SELECT * FROM Mood where thedate is \"2019-02-19\" limit 7"
+                queryString = "SELECT * FROM Mood where thedate is \"2019-02-12\" limit 7"
             case 3:
-                queryString = "SELECT * FROM Mood where thedate is \"2019-02-20\" limit 7"
+                queryString = "SELECT * FROM Mood where thedate is \"2019-02-13\" limit 7"
             case 4:
-                queryString = "SELECT * FROM Mood where thedate is \"2019-02-21\" limit 7"
+                queryString = "SELECT * FROM Mood where thedate is \"2019-02-14\" limit 7"
             case 5:
-                queryString = "SELECT * FROM Mood where thedate is \"2019-02-22\" limit 7"
+                queryString = "SELECT * FROM Mood where thedate is \"2019-02-15\" limit 7"
             case 6:
-                queryString = "SELECT * FROM Mood where thedate is \"2019-02-23\" limit 7"
+                queryString = "SELECT * FROM Mood where thedate is \"2019-02-16\" limit 7"
             default:
-                queryString = "SELECT * FROM Mood where thedate is \"2019-02-24\" limit 7"
+                queryString = "SELECT * FROM Mood where thedate is \"2019-02-17\" limit 7"
             }
         }else{
            //if we are measuring throughout day and we want moods for mornings through the week

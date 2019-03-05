@@ -32,14 +32,14 @@ class ThirdViewController: UIViewController {
             whichtime.isHidden = true
             timelabels.isHidden = true
         }else{
-            currenttimevalue = 6
+            currenttimevalue = 1
             currentstate = 1
             
             whichday.isHidden = false
             whichtime.isHidden = true
             daylabels.isHidden = true
             timelabels.isHidden = false
-            DayTime.selectedSegmentIndex = currentstate
+            DayTime.selectedSegmentIndex = currentstate-1
             whichday.selectedSegmentIndex = currenttimevalue-1
             whichtime.selectedSegmentIndex = currenttimevalue-1
         }
@@ -66,15 +66,15 @@ class ThirdViewController: UIViewController {
         dateFormatter.dateFormat = "yyyy/MM/dd"
         
         //group 1
-        let secondmonday = dateFormatter.date(from: "2019/02/18") ?? Date() //start of second week
+        let secondmonday = dateFormatter.date(from: "2019/02/21") ?? Date() //start of second week
         
         if today < secondmonday{//if we are still in first week, group 1
             return true
         }else{
             return false
         }
- /*
-        
+ 
+        /*
         //group 2
         if today >= secondmonday{//if we are in second week, group 2
             return true
