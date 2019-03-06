@@ -29,7 +29,7 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
         let today = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd"
-        let secondmonday = dateFormatter.date(from: "2019/02/21") ?? Date() //start of second week
+        let secondmonday = dateFormatter.date(from: "2019/03/06") ?? Date() //start of second week
 
         
          if today < secondmonday{//if we are still in first week, group 1
@@ -61,12 +61,12 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
         
         //create table
-       /*
+       
         if sqlite3_exec(db, "DROP TABLE Mood", nil, nil, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error removing table: \(errmsg)")
         }
-        */
+        
         
         if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Mood (id INTEGER PRIMARY KEY AUTOINCREMENT, thedate TEXT, thetime TEXT, emotion TEXT)", nil, nil, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
@@ -75,6 +75,55 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         //setisready()
         //setcircle()
+        
+        let demoqueryarray: [String] =
+            ["INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-06','morning','angry')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-06','lunch','numb')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-06','afternoon','cheerful')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-06','evening','alert')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-06','bedtime','excited')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-06','overall','suprise')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-07','morning','relaxed')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-07','lunch','happy')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-07','afternoon','content')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-07','evening','stressed')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-07','bedtime','bored')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-07','overall','depressed')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-08','morning','sad')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-08','lunch','tired')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-08','afternoon','numb')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-08','evening','angry')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-08','bedtime','excited')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-08','overall','content')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-09','morning','suprise')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-09','lunch','angry')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-09','afternoon','happy')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-09','evening','pleasure')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-09','bedtime','bored')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-09','overall','fatigued')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-10','morning','nervous')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-10','lunch','sad')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-10','afternoon','tired')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-10','evening','delighted')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-10','bedtime','cheerful')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-10','overall','irritated')"
+      ]
+        for demoqueryString in demoqueryarray {
+            var demostmt: OpaquePointer?
+            //preparing the query
+            if sqlite3_prepare(db, demoqueryString, -1, &demostmt, nil) != SQLITE_OK{
+                let errmsg = String(cString: sqlite3_errmsg(db)!)
+                print("error preparing insert: \(errmsg)")
+                return
+            }
+            if sqlite3_step(demostmt) != SQLITE_DONE {
+                let errmsg = String(cString: sqlite3_errmsg(db)!)
+                print("failure inserting emotion: \(errmsg)")
+                return
+            }
+        }
+
+ 
 
     }
 
@@ -114,7 +163,7 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
 
         //print(isready)
-        
+         isready = true //demo
     }
     
     func settimestring(){

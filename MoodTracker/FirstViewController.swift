@@ -24,7 +24,7 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        
+        isready = true //demo
         
         if isready {
             circleimage.image = #imageLiteral(resourceName: "green")

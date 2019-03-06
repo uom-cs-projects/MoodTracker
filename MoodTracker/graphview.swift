@@ -198,8 +198,17 @@ class getgraphvalues{
     var myvalue = 4
     
     class func returnnumbers(myvalue: Int, selectedsegment: Int, mystate: Int) -> [Int] {
-        var activation = [0,0,0,0,0,0,0]
-        var pleasedness = [0,0,0,0,0,0,0]
+        var activation: [Int]
+        var pleasedness: [Int]
+        if mystate==1 {
+            activation = [0,0,0,0,0,0]
+            pleasedness = [0,0,0,0,0,0]
+        }
+        else{
+            activation = [0,0,0,0,0,0,0]
+            pleasedness = [0,0,0,0,0,0,0]
+        }
+
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) .appendingPathComponent("MoodDatabase.sqlite")
         
         //open database
@@ -210,73 +219,76 @@ class getgraphvalues{
         
         var position = 0
         for currentmood in moodList {
-            switch currentmood.emotion{
-            case "alert":
-                activation[position] = 10+1
-                pleasedness[position] = 5+1
-            case "nervous":
-                activation[position] = 9+1
-                pleasedness[position] = 4+1
-            case "cheerful":
-                activation[position] = 9+1
-                pleasedness[position] = 6+1
-            case "angry":
-                activation[position] = 8+1
-                pleasedness[position] = 3+1
-            case "suprise":
-                activation[position] = 8+1
-                pleasedness[position] = 7+1
-            case "stressed":
-                activation[position] = 7+1
-                pleasedness[position] = 2+1
-            case "excited":
-                activation[position] = 7+1
-                pleasedness[position] = 8+1
-            case "irritated":
-                activation[position] = 6+1
-                pleasedness[position] = 1+1
-            case "delighted":
-                activation[position] = 6+1
-                pleasedness[position] = 9+1
-            case "sad":
-                activation[position] = 5+1
-                pleasedness[position] = 0+1
-            case "happy":
-                activation[position] = 5+1
-                pleasedness[position] = 10+1
-            case "depressed":
-                activation[position] = 4+1
-                pleasedness[position] = 1+1
-            case "pleasure":
-                activation[position] = 4+1
-                pleasedness[position] = 9+1
-            case "bored":
-                activation[position] = 3+1
-                pleasedness[position] = 2+1
-            case "hopeful":
-                activation[position] = 3+1
-                pleasedness[position] = 8+1
-            case "fatigued":
-                activation[position] = 2+1
-                pleasedness[position] = 3+1
-            case "content":
-                activation[position] = 2+1
-                pleasedness[position] = 7+1
-            case "tired":
-                activation[position] = 1+1
-                pleasedness[position] = 4+1
-            case "relaxed":
-                activation[position] = 1+1
-                pleasedness[position] = 6+1
-            case "numb":
-                activation[position] = 0+1
-                pleasedness[position] = 5+1
+            //if position<activation.count{
+                switch currentmood.emotion{
+                case "alert":
+                    activation[position] = 10+1
+                    pleasedness[position] = 5+1
+                case "nervous":
+                    activation[position] = 9+1
+                    pleasedness[position] = 4+1
+                case "cheerful":
+                    activation[position] = 9+1
+                    pleasedness[position] = 6+1
+                case "angry":
+                    activation[position] = 8+1
+                    pleasedness[position] = 3+1
+                case "suprise":
+                    activation[position] = 8+1
+                    pleasedness[position] = 7+1
+                case "stressed":
+                    activation[position] = 7+1
+                    pleasedness[position] = 2+1
+                case "excited":
+                    activation[position] = 7+1
+                    pleasedness[position] = 8+1
+                case "irritated":
+                    activation[position] = 6+1
+                    pleasedness[position] = 1+1
+                case "delighted":
+                    activation[position] = 6+1
+                    pleasedness[position] = 9+1
+                case "sad":
+                    activation[position] = 5+1
+                    pleasedness[position] = 0+1
+                case "happy":
+                    activation[position] = 5+1
+                    pleasedness[position] = 10+1
+                case "depressed":
+                    activation[position] = 4+1
+                    pleasedness[position] = 1+1
+                case "pleasure":
+                    activation[position] = 4+1
+                    pleasedness[position] = 9+1
+                case "bored":
+                    activation[position] = 3+1
+                    pleasedness[position] = 2+1
+                case "hopeful":
+                    activation[position] = 3+1
+                    pleasedness[position] = 8+1
+                case "fatigued":
+                    activation[position] = 2+1
+                    pleasedness[position] = 3+1
+                case "content":
+                    activation[position] = 2+1
+                    pleasedness[position] = 7+1
+                case "tired":
+                    activation[position] = 1+1
+                    pleasedness[position] = 4+1
+                case "relaxed":
+                    activation[position] = 1+1
+                    pleasedness[position] = 6+1
+                case "numb":
+                    activation[position] = 0+1
+                    pleasedness[position] = 5+1
+                    
+                default:
+                    activation[position] = 0
+                    pleasedness[position] = 0
+                }
                 
-            default:
-                activation[position] = 0
-                pleasedness[position] = 0
-            }
-            position = position + 1
+                position = position + 1
+          //  }
         }
         if selectedsegment == 1 {
             return activation
@@ -291,24 +303,24 @@ class getgraphvalues{
         var queryString = "SELECT * FROM Mood"
         //if daily ie only "today" should be shown
         if mystate==0 {
-            queryString = "SELECT * FROM Mood where thetime is \"today\" limit 7"
+            queryString = "SELECT * FROM Mood where thetime is \"today\" limit 6"
         }else if mystate==1{
             //if we are measuring throughout day, and we want the day overview ie morning through evening
             switch myvalue {
             case 1:
-                queryString = "SELECT * FROM Mood where thedate is \"2019-02-11\" limit 7"
+                queryString = "SELECT * FROM Mood where thedate is \"2019-03-06\" limit 6"
             case 2:
-                queryString = "SELECT * FROM Mood where thedate is \"2019-02-12\" limit 7"
+                queryString = "SELECT * FROM Mood where thedate is \"2019-03-07\" limit 6"
             case 3:
-                queryString = "SELECT * FROM Mood where thedate is \"2019-02-13\" limit 7"
+                queryString = "SELECT * FROM Mood where thedate is \"2019-03-08\" limit 6"
             case 4:
-                queryString = "SELECT * FROM Mood where thedate is \"2019-02-14\" limit 7"
+                queryString = "SELECT * FROM Mood where thedate is \"2019-03-09\" limit 6"
             case 5:
-                queryString = "SELECT * FROM Mood where thedate is \"2019-02-15\" limit 7"
+                queryString = "SELECT * FROM Mood where thedate is \"2019-03-10\" limit 6"
             case 6:
-                queryString = "SELECT * FROM Mood where thedate is \"2019-02-16\" limit 7"
+                queryString = "SELECT * FROM Mood where thedate is \"2019-03-11\" limit 6"
             default:
-                queryString = "SELECT * FROM Mood where thedate is \"2019-02-17\" limit 7"
+                queryString = "SELECT * FROM Mood where thedate is \"2019-03-12\" limit 6"
             }
         }else{
            //if we are measuring throughout day and we want moods for mornings through the week
