@@ -106,7 +106,9 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
              "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-10','afternoon','tired')",
              "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-10','evening','delighted')",
              "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-10','bedtime','cheerful')",
-             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-10','overall','irritated')"
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-10','overall','irritated')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-11','morning','content')",
+             "INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-11','lunch','depressed')"
       ]
         for demoqueryString in demoqueryarray {
             var demostmt: OpaquePointer?
