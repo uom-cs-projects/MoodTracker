@@ -14,12 +14,12 @@ class ThirdViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
         navigationController?.navigationBar.topItem?.title="Stats"
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
         } else {
-            // Fallback on earlier versions
+            
         }
     }
     
@@ -46,9 +46,9 @@ class ThirdViewController: UIViewController {
 
 
         GraphView.graphPoints = getgraphvalues.returnnumbers(myvalue: currenttimevalue, selectedsegment: currenttogglevalue, mystate: currentstate)
-        //GraphView.graphPoints = getgraphvalues.returnnumbers(myvalue: 0, selectedsegment: 0, mystate: 0)
+        
         GraphView.setNeedsDisplay()
-        //print("toggle", currenttogglevalue, "time", currenttimevalue, "state", currentstate)
+        
         happytoggle.selectedSegmentIndex = currenttogglevalue
         
         
@@ -61,7 +61,7 @@ class ThirdViewController: UIViewController {
     func calculatedaily()-> Bool{
         
         let today = Date()
-        //var secondmonday = Date()
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd"
         
@@ -90,7 +90,7 @@ class ThirdViewController: UIViewController {
         
         GraphView.graphPoints = getgraphvalues.returnnumbers(myvalue: currenttimevalue, selectedsegment: currenttogglevalue, mystate: currentstate)
         GraphView.setNeedsDisplay()
-        //print("toggle", currenttogglevalue, "time", currenttimevalue, "state", currentstate)
+        
         
     }
     

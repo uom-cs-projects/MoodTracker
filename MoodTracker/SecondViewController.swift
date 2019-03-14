@@ -15,11 +15,8 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
     var daily = false
     override func viewWillAppear(_ animated: Bool) {
         daily = calculatedaily()
-        //print("daily:")
-        //print(daily)
         setisready()
         setcircle()
-        //print(timestring)
         let titlestring = "Log Mood for " + String(timestring.prefix(1)).capitalized + String(timestring.dropFirst())
         navigationController?.navigationBar.topItem?.title=titlestring
     }
@@ -140,9 +137,7 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
             }
         }else{
             settimestring()
-            //print(timestring)
             readValues()
-            //print(moodList.count)
             if moodList.count == 0{
                 isready = true
             }else if moodList.count == 1 && timestring == "Bedtime"{
@@ -151,8 +146,6 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
             }else{
                 isready = false
             }
-            //print("isready")
-            //print(isready)
             if timestring == "Overall"{
                 readValues()
                 print(moodList.count)
@@ -163,8 +156,6 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
                 }
             }
         }
-
-        //print(isready)
          isready = true //demo
     }
     
@@ -194,7 +185,6 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
             circle.image = #imageLiteral(resourceName: "green")
             inputnow.setTitle("Input data now!", for: .normal)
             inputnow.isEnabled = true
-            //submit.isHidden = false
             submit.isEnabled = true
             let submitstring = "Submit Mood for " + timestring
             submit.setTitle(submitstring, for: .normal)
@@ -309,7 +299,6 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
         let theFormatter = DateFormatter()
         theFormatter.dateFormat = "yyyy-MM-dd";
         let datestring = theFormatter.string(from: Date()) as NSString
-        //print(datestring)
         
         //creating a statement
         var stmt: OpaquePointer?
@@ -347,13 +336,7 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
             print("failure inserting emotion: \(errmsg)")
             return
         }
-        readValues()
-        
-        //displaying a success message
-        //print("Mood saved successfully")
-        
-        
-        
+        readValues()        
     }
     
     

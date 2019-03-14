@@ -13,12 +13,6 @@ class TableViewController: UITableViewController {
     @IBOutlet var tabletabbar: UITabBarItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) .appendingPathComponent("MoodDatabase.sqlite")
         
         //open database
@@ -30,7 +24,6 @@ class TableViewController: UITableViewController {
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
         } else {
-            // Fallback on earlier versions
         }
         
         
@@ -42,7 +35,6 @@ class TableViewController: UITableViewController {
     var db: OpaquePointer?
     var moodList = [Moods]()
     var count = 0
-    // MARK: - Table view data source
 
     
     func readValues(){
@@ -75,31 +67,20 @@ class TableViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        //print(moodList.count)
-        //print("moodList.count")
         return moodList.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
         // Configure the cell...
         NSLog("get cell")
         let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "Cell")
         cell.detailTextLabel?.textColor = .gray
         cell.selectionStyle = .none
-        //cell.textLabel!.text = moodList[count].emotion
-        //print("count")
-        //print(count)
-        //print(indexPath)
-        //print(indexPath[1])
         cell.textLabel?.text = moodList[indexPath[1]].emotion
         cell.detailTextLabel?.text = moodList[indexPath[1]].date! + " at " + moodList[indexPath[1]].time!
 
@@ -114,9 +95,7 @@ class TableViewController: UITableViewController {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
-
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -126,24 +105,24 @@ class TableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+ 
 
-    /*
+    
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
 
     }
-    */
+ 
 
-    /*
+    
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
     }
-    */
+    
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

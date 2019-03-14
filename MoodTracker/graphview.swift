@@ -20,8 +20,8 @@ private struct Constants {
 
 @IBDesignable class GraphView: UIView {
     
-    //var graphPoints = getgraphvalues.returnnumbers(myvalue: 4)
-    var graphPoints: [Int] = []// = getgraphvalues.returnnumbers(myvalue: 4)
+    
+    var graphPoints: [Int] = []
     var realpoints: [Int] = []
     // 1
     @IBInspectable var startColor: UIColor = .red
@@ -37,7 +37,7 @@ private struct Constants {
                 realpoints.append(point)
             }
         }
-        //graphPoints = getgraphvalues.returnnumbers(myvalue: 4)
+        
         let width = rect.width
         let height = rect.height
         let path = UIBezierPath(roundedRect: rect,
@@ -299,7 +299,7 @@ class getgraphvalues{
     class func readValues(myvalue: Int, mystate: Int){
         
         moodList.removeAll()
-        //print("state", mystate, "value", myvalue)
+        
         var queryString = "SELECT * FROM Mood"
         //if daily ie only "today" should be shown
         if mystate==0 {
@@ -341,13 +341,7 @@ class getgraphvalues{
 
             
         }
-                    //print("state", queryString)
-        
-        
-        
 
-        
-        
         var stmt:OpaquePointer?
 
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
@@ -367,7 +361,6 @@ class getgraphvalues{
             //adding values to list
             moodList.append(Moods(id: Int(id), date: String(describing: date), time: String(describing: time), emotion: String(describing: emotion)))
         }
-        //print("state: numebr found:", moodList.count)
         count = 0
     }
     
