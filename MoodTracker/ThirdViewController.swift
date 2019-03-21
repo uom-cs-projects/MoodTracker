@@ -34,7 +34,6 @@ class ThirdViewController: UIViewController {
         }else{
             currenttimevalue = 1
             currentstate = 1
-            
             whichday.isHidden = false
             whichtime.isHidden = true
             daylabels.isHidden = true

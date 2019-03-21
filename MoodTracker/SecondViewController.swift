@@ -28,16 +28,18 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
         dateFormatter.dateFormat = "yyyy/MM/dd"
         let secondmonday = dateFormatter.date(from: "2019/03/06") ?? Date() //start of second week
 
-        
-         if today < secondmonday{//if we are still in first week, group 1
-         return true
+        //group 1
+        //if we are still in first week, group 1
+         if today < secondmonday{
+            return true
          }else{
-         return false
+            return false
          }
  
         /*
         //group 2
-        if today >= secondmonday{//if we are in second week, group 2
+        //if we are in second week, group 2
+        if today >= secondmonday{
             return true
         }else{
             return false
@@ -57,21 +59,17 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
             print("error opening database")
         }
         
-        //create table
-       
+        //delete table
         if sqlite3_exec(db, "DROP TABLE Mood", nil, nil, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error removing table: \(errmsg)")
         }
-        
-        
+ 
+        //create table
         if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Mood (id INTEGER PRIMARY KEY AUTOINCREMENT, thedate TEXT, thetime TEXT, emotion TEXT)", nil, nil, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error creating table: \(errmsg)")
         }
-        
-        //setisready()
-        //setcircle()
         
         let demoqueryarray: [String] =
             ["INSERT INTO Mood (thedate, thetime, emotion) VALUES ('2019-03-06','morning','angry')",
@@ -109,7 +107,7 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
       ]
         for demoqueryString in demoqueryarray {
             var demostmt: OpaquePointer?
-            //preparing the query
+            //prepare the query
             if sqlite3_prepare(db, demoqueryString, -1, &demostmt, nil) != SQLITE_OK{
                 let errmsg = String(cString: sqlite3_errmsg(db)!)
                 print("error preparing insert: \(errmsg)")
@@ -156,7 +154,7 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
                 }
             }
         }
-         isready = true //demo
+        
     }
     
     func settimestring(){
@@ -180,6 +178,7 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
             }
         }
     }
+    
     func setcircle(){
         if isready{
             circle.image = #imageLiteral(resourceName: "green")
@@ -195,8 +194,6 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
             submit.isHidden = true
             submit.isEnabled = false
         }
-        
-        
     }
     
     var db: OpaquePointer?
@@ -211,8 +208,9 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet var emotionbuttons: [UIButton]!
     
     func resetpage(){
+        //hide all emotion buttons, show circle and thank for mood input
         circle.image = #imageLiteral(resourceName: "orange")
-        inputnow.setTitle("You have already logged your mood for now", for: .normal)
+        inputnow.setTitle("Thanks for logging your mood! Please come back later!", for: .normal)
         inputnow.isEnabled = false
         submit.isHidden = true
         submit.isEnabled = false
@@ -220,8 +218,7 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
             curbutton.isHidden = true
         }
         circle.isHidden = false
-        inputnow.isHidden = false
-        
+        inputnow.isHidden = false        
     }
     
     @IBAction func inputnow(_ sender: Any) {
@@ -258,7 +255,7 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         
         
-        //set up not submitted yet
+        //set up not submitted yet alert message
         let alertmessage = "Submitting \"" + currentemotion.lowercased() + "\" as your emotion for " + (timestring.lowercased())
         let alert = UIAlertController(title: "Please Confirm your Data", message: alertmessage, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Default action"), style: .cancel, handler: { _ in
@@ -272,6 +269,8 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
         alert.preferredAction = OKAction
         
         
+        
+        //set up empty submit message
         let emptymessage = "Please Select an Emotion"
         let empty = UIAlertController(title: "No Selection", message: emptymessage, preferredStyle: .alert)
         let emptyOKAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in
@@ -290,11 +289,9 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     func addtodb(){
-        
-        
+
         let emotion = currentemotion.lowercased() as NSString
         let thetime = (timestring.lowercased()) as NSString
-        
         
         let theFormatter = DateFormatter()
         theFormatter.dateFormat = "yyyy-MM-dd";
@@ -374,7 +371,6 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
             print("failure binding name: \(errmsg)")
             return
         }
-
         
         //traverse through all the records
         while(sqlite3_step(stmt) == SQLITE_ROW){
@@ -382,8 +378,7 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
             let date = String(cString: sqlite3_column_text(stmt, 1))
             let time = String(cString: sqlite3_column_text(stmt, 2))
             let emotion = String(cString: sqlite3_column_text(stmt, 3))
-            
-            
+                        
             //add values to list
             moodList.append(Moods(id: Int(id), date: String(describing: date), time: String(describing: time), emotion: String(describing: emotion)))
         }

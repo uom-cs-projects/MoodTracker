@@ -19,7 +19,7 @@ class TableViewController: UITableViewController {
         if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
             print("error opening database")
         }
-          readValues()
+        readValues()
         navigationController?.navigationBar.topItem?.title="History"
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
@@ -36,11 +36,10 @@ class TableViewController: UITableViewController {
     var moodList = [Moods]()
     var count = 0
 
-    
     func readValues(){
         
         moodList.removeAll()
-        
+        //basic sql query
         let queryString = "SELECT * FROM Mood"
         var stmt:OpaquePointer?
         

@@ -15,27 +15,21 @@ class FirstViewController: UIViewController {
     var isready = true
     
     @IBAction func gotoinputpage(_ sender: UIButton) {
-        tabBarController?.selectedIndex = 1
+        tabBarController?.selectedIndex = 1 //input page
     }
     
     @IBOutlet var inputnow: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        isready = true //demo
-        
         if isready {
             circleimage.image = #imageLiteral(resourceName: "green")
             inputnow.setTitle("Input data now!", for: .normal)
             inputnow.isEnabled = true
-            
         }else{
             circleimage.image = #imageLiteral(resourceName: "orange")
             inputnow.setTitle("Please wait until input time", for: .normal)
             inputnow.isEnabled = false
-            
         }
     }
 

@@ -4,7 +4,7 @@
 //
 //  Created by Fiona Campbell on 20/12/2018.
 //  Copyright © 2018 Fiona Campbell. All rights reserved.
-//  tutorial @ raywenderlich.com/410-core-graphics-tutorial-part-2-gradients-and-contexts
+//  tutorial for graph display @ raywenderlich.com/410-core-graphics-tutorial-part-2-gradients-and-contexts
 
 import UIKit
 import SQLite3
@@ -20,24 +20,20 @@ private struct Constants {
 
 @IBDesignable class GraphView: UIView {
     
-    
     var graphPoints: [Int] = []
-    var realpoints: [Int] = []
     // 1
     @IBInspectable var startColor: UIColor = .red
     @IBInspectable var endColor: UIColor = .green
     
     override func draw(_ rect: CGRect) {
         
+        
+        //get initial graph values
         if graphPoints == []{
                    graphPoints = getgraphvalues.returnnumbers(myvalue: 0, selectedsegment: 0, mystate: 0)
         }
-        for point in graphPoints {
-            if(point != 0){
-                realpoints.append(point)
-            }
-        }
         
+        //set dimensions for graph area
         let width = rect.width
         let height = rect.height
         let path = UIBezierPath(roundedRect: rect,
@@ -45,22 +41,16 @@ private struct Constants {
                                 cornerRadii: Constants.cornerRadiusSize)
         path.addClip()
         
-        // 2
+        //create background colours
         let context = UIGraphicsGetCurrentContext()!
         let colors = [startColor.cgColor, endColor.cgColor]
-        
-        // 3
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        
-        // 4
         let colorLocations: [CGFloat] = [0.0, 1.0]
-        
-        // 5
         let gradient = CGGradient(colorsSpace: colorSpace,
                                   colors: colors as CFArray,
                                   locations: colorLocations)!
         
-        // 6
+        //
         let startPoint = CGPoint.zero
         let endPoint = CGPoint(x: 0, y: bounds.height)
         context.drawLinearGradient(gradient,
@@ -69,8 +59,7 @@ private struct Constants {
                                    options: [])
         
         
-        //calculate the x point
-        
+        //calculate the x coordinate
         let margin = Constants.margin
         let graphWidth = width - margin * 2 - 4
         let columnXPoint = { (column: Int) -> CGFloat in
@@ -78,10 +67,8 @@ private struct Constants {
             let spacing = graphWidth / CGFloat(self.graphPoints.count - 1)
             return CGFloat(column) * spacing + margin + 2
         }
-        
-        
-        // calculate the y point
-        
+ 
+        // calculate the y coordinate
         let topBorder = Constants.topBorder
         let bottomBorder = Constants.bottomBorder
         let graphHeight = height - topBorder - bottomBorder
@@ -90,11 +77,8 @@ private struct Constants {
             let y = CGFloat(graphPoint) / CGFloat(maxValue) * graphHeight
             return graphHeight + topBorder - y // Flip the graph
         }
-        
-        
-        
+
         // draw the line graph
-        
         UIColor.white.setFill()
         UIColor.white.setStroke()
         
@@ -104,45 +88,38 @@ private struct Constants {
         // go to start of line
         graphPath.move(to: CGPoint(x: columnXPoint(0), y: columnYPoint(graphPoints[0])))
         
-        // add points for each item in the graphPoints array
+        // add points and lines for each item in the graphPoints array
         // at the correct (x, y) for the point
         for i in 1..<graphPoints.count {
             if(graphPoints[i] != 0){
-                
-                
-            
             let nextPoint = CGPoint(x: columnXPoint(i), y: columnYPoint(graphPoints[i]))
             graphPath.addLine(to: nextPoint)
             }
         }
         
-        //graphPath.stroke()
-        
         //Create the clipping path for the graph gradient
         
-        //1 - save the state of the context (commented out for now)
+        //save context state
         context.saveGState()
         
-        //2 - make a copy of the path
+        //make a copy of the path
         let clippingPath = graphPath.copy() as! UIBezierPath
         
-        //3 - add lines to the copied path to complete the clip area
+        //add lines to the copied path to complete the clip area
         clippingPath.addLine(to: CGPoint(x: columnXPoint(graphPoints.count - 1), y:height))
         clippingPath.addLine(to: CGPoint(x:columnXPoint(0), y:height))
         clippingPath.close()
         
-        //4 - add the clipping path to the context
+        //aadd the clipping path to the context
         clippingPath.addClip()
-        
-        
-        //5
+
+        //set graph area values
         let highestYPoint = columnYPoint(maxValue)
         let graphStartPoint = CGPoint(x: margin, y: highestYPoint)
         let graphEndPoint = CGPoint(x: margin, y: bounds.height)
         
         context.drawLinearGradient(gradient, start: graphStartPoint, end: graphEndPoint, options: [])
         context.restoreGState()
-        
         
         //draw the line on top of the clipped gradient
         graphPath.lineWidth = 2.0
@@ -163,7 +140,7 @@ private struct Constants {
             }
         }
         
-        //Draw horizontal graph lines on the top of everything
+        //horizontal lines for graph references
         let linePath = UIBezierPath()
         
         //top line
@@ -180,15 +157,11 @@ private struct Constants {
         let color = UIColor(white: 1.0, alpha: Constants.colorAlpha)
         color.setStroke()
         
+        //make line
         linePath.lineWidth = 1.0
         linePath.stroke()
     }
-    
-    
-    
 }
-
-
 
 class getgraphvalues{
     static var moodList = [Moods]()
@@ -201,10 +174,12 @@ class getgraphvalues{
         var activation: [Int]
         var pleasedness: [Int]
         if mystate==1 {
+            //array for times of the day
             activation = [0,0,0,0,0,0]
             pleasedness = [0,0,0,0,0,0]
         }
         else{
+            //array for days of the week
             activation = [0,0,0,0,0,0,0]
             pleasedness = [0,0,0,0,0,0,0]
         }
@@ -219,7 +194,6 @@ class getgraphvalues{
         
         var position = 0
         for currentmood in moodList {
-            //if position<activation.count{
                 switch currentmood.emotion{
                 case "alert":
                     activation[position] = 10+1
@@ -288,7 +262,6 @@ class getgraphvalues{
                 }
                 
                 position = position + 1
-          //  }
         }
         if selectedsegment == 1 {
             return activation
@@ -306,6 +279,7 @@ class getgraphvalues{
             queryString = "SELECT * FROM Mood where thetime is \"today\" limit 6"
         }else if mystate==1{
             //if we are measuring throughout day, and we want the day overview ie morning through evening
+            //get one value for each time of the specific day
             switch myvalue {
             case 1:
                 queryString = "SELECT * FROM Mood where thedate is \"2019-03-06\" limit 6"
@@ -324,6 +298,7 @@ class getgraphvalues{
             }
         }else{
            //if we are measuring throughout day and we want moods for mornings through the week
+            //get one value for each day of the week
             switch myvalue {
             case 1:
                 queryString = "SELECT * FROM Mood where thetime is \"morning\" limit 7"
@@ -338,12 +313,9 @@ class getgraphvalues{
             default:
                 queryString = "SELECT * FROM Mood where thetime is \"overall\" limit 7"
             }
-
-            
         }
 
         var stmt:OpaquePointer?
-
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error preparing insert: \(errmsg)")
@@ -363,7 +335,5 @@ class getgraphvalues{
         }
         count = 0
     }
-    
-    
-    
+
 }
